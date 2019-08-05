@@ -1,0 +1,230 @@
+body{
+    width: 1000px;
+    margin: 0 auto 0 auto;
+}
+header{
+    height: 240px;
+    background-color: rgb(221, 202, 188);
+}
+nav a:link, nav a:hover, nav a:visited{
+    color: rgb(143, 75, 29);
+}
+main a:link, header a:link, footer a:link{
+    color: rgb(143, 75, 29);
+}
+main a:hover, header a:hover, header a:hover{
+    color :rgb(71, 33, 8);
+}
+main a:visited, header a:visited, header a:visited{
+    color: rgb(175, 147, 129);
+}
+#logo{
+    float: left;
+}
+h1{
+    margin: 0;
+    padding-top: 66px;
+    font-size: 40pt;
+}
+#monsieur{
+    color: rgb(141, 58, 4);
+}
+#meilleur-java{
+    display: block;
+    font-size: 35pt;
+    color: rgb(160, 110, 77);
+}
+header p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#dejaMembre{
+    display: block;
+    color : rgb(160, 110, 77);
+    text-align: right;
+    padding-right: 20px;
+}
+nav ul{
+    background-color: rgb(221, 202, 188);
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto ;
+    grid-template-rows: 46px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+nav li{
+    list-style-type: none;    
+    background-color: rgb(221, 202, 188);
+}
+nav a{
+    display: block;
+    text-decoration:none;
+    font-weight: bold;
+    color: black;
+    line-height: 46px;
+    width: 142.85px;
+}
+nav ul li:hover{
+    border-bottom: 7px solid rgba(160, 110, 77);
+}
+.item-menu{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+h2{
+    display: block;
+    width: 960px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    color:rgb(160, 110, 77);
+    border-bottom: 1px solid rgba(160, 110, 77);
+}
+h3{
+    color:rgb(160, 110, 77);
+    margin-top: 30px;
+}
+.sansPuce{
+    list-style-type: none;
+}
+main{
+    margin-left : 20px;
+    margin-right : 20px;
+}
+main p{
+    line-height: 17pt;
+}
+main ul{
+    padding-left: 30px;
+}
+footer{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 960px;
+    border-top: 1px solid rgba(160, 110, 77);
+    margin-top: 80px;
+    margin-left : 20px;
+}
+footer h3{    
+    
+    margin-bottom: 20px;    
+    margin-top: 10px;
+    color:rgb(160, 110, 77);
+}
+.listePuceImage{
+    list-style-image : url('../images/coffee-list-bullet-2.jpg');
+}
+#fleche-footer{    
+    margin-top: 40px;
+    margin-left: 90px;
+}
+#block-mailto{
+    float: right;
+}
+#lien-mailto{
+    display: inline-block;
+    width:  98px;    
+    margin-top: 55px;
+}
+#logo-mailto{
+    float: left;
+}
+.center {
+    display: block;
+    margin: 0 auto;   
+    text-align: center; 
+}
+
+.fleches{
+    margin: 260px 20px;
+}
+
+
+#images{
+    display: flex;
+    justify-content: center;
+}
+
+.selection{
+    border-bottom: 4px ridge rgb(160, 110, 77);
+}
+#fleurs-cafe{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(160, 110, 77);
+}
+#carte-cafe{
+    float: right;
+    border: 1px solid rgba(160, 110, 77);
+    margin: 40px 0px 20px 20px;
+}
+#femme-cafe{
+    float: left;
+    margin: 10px 20px 20px 0px;
+    border: 1px solid rgba(160, 110, 77);
+}
+.formulaire{
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+.labelInfo{
+    display: inline-block;
+    width: 165px;
+}
+#envoyerFormulaire{
+    padding: 5px 5px 5px 5px;
+    margin-left: 86px;
+}
+#interets{
+    float : left;
+    display: block;
+    width: 165px;
+    height: 130px;
+}
+#errUtilisateur, #errMotDePasse, #errMotDePasseRep, #errPrenom, #errNom, #errCourriel, #errNaissance, #errInterets {
+color: red;
+}
+#errInterets{
+    padding-left: 51px;
+}
+
+
+#gridVente{
+    display: grid;
+    grid-template-columns: 240px 240px 240px 240px;
+    grid-template-rows: 200px 200px;
+}
+
+#gridVente div{
+    margin: auto auto;
+    align-content: center;
+}
+
+.icones{
+    float : right;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+#gridVente div img:first-child{
+    display: block;
+    margin: 0 auto;
+}
+
+#thumbnails{
+    display: grid;
+    margin:0 80px;
+    grid-template-columns:160px 160px 160px 160px 160px;
+    grid-template-rows: 70px;
+}
+
+#thumbnails img{
+margin: auto auto;
+}
+
+.text-boutique{
+    line-height: 30pt;
+}
