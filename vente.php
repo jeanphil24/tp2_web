@@ -10,26 +10,15 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <header>
-      <a href="index.html"
-        ><img id="logo" src="images/logo.png" alt="logo du site monsieur café"
-      /></a>
-      <h1>
-        <span id="monsieur">Monsieur</span> Café
-        <span id="meilleur-java">Le meilleur du java</span>
-      </h1>
-      <a href="#"><div id="dejaMembre"><p>Déjà membre ?</p><p>Cliquez ici !</p></div> </a>
+  <header>
+      <?php
+        include('header.php');
+      ?>
     </header>
     <nav>
-      <ul>
-        <li class="item-menu"><a href="index.html">Accueil</a></li>
-        <li class="item-menu"><a href="galerie.html">Galerie photo</a></li>
-        <li class="item-menu"><a href="vente.html">Boutique</a></li>
-        <li class="item-menu"><a href="cafe-monde.html">Histoire du café</a></li>
-        <li class="item-menu"><a href="sources.html">Références</a></li>
-        <li class="item-menu"><a href="plan.html">Plan du site</a></li>
-        <li class="item-menu"><a href="inscription.html">Inscription</a></li>
-      </ul>
+      <?php
+        include('nav.php');
+      ?>
     </nav>
     <main>
       <h2>Notre boutique</h2>
@@ -91,29 +80,9 @@
       </div>
     </main>
     <footer>
-      <div>
-        <h3>Qui sommes nous ?</h3>
-        <ul class="listePuceImage">
-          <li>Simon Paris</li>
-          <li>Jean-Phippe Proteau-Coulombe</li>
-        </ul>
-      </div>
-      <div>
-          <a href="#logo"><img id="fleche-footer" src="images/fleche-remonter-petite.jpg" alt="icone de fleche" title="Cliquez ici pour remonter"/></a>
-      </div>
-      <div>
-        <div id="block-mailto">
-          <a href="mailto:jp.proteau@hotmail.com"
-            ><img
-              id="logo-mailto"
-              src="images/contactez-nous.png"
-              alt="Tasse de café avec mémo écrit contactez-nous"
-          /></a>
-          <a id="lien-mailto" href="mailto:jp.proteau@hotmail.com"
-            >Des question ? écrivez-nous</a
-          >
-        </div>
-      </div>
+      <?php
+        include('footer.php');
+      ?>
     </footer>
   </body>
 </html>
