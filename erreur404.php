@@ -22,14 +22,8 @@
       ?>
     </nav>
     <main>
-      <h2>Bienvenue sur notre site !</h2>
-      <p>
-        Voici notre modeste site web consacré au café pour le travail d'équipe #1
-        du cours Développement multimédia 420-219-SF.
-      </p>
-      <p>
-      <a href="erreur404.php">Amenez moi à la page d'erreur</a>
-      </p>
+      <h2>Cette page n'existe pas</h2>
+      <img src="images/erreur404.jpg" alt="image café 404">
     </main>
     <footer>
       <?php

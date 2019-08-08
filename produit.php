@@ -1,3 +1,6 @@
+<?php
+    include('lister-produit.php');
+?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
 <html lang="fr">
@@ -22,13 +25,12 @@
       ?>
     </nav>
     <main>
-      <h2>Bienvenue sur notre site !</h2>
+      <h2>
+      
+      </h2>
       <p>
         Voici notre modeste site web consacré au café pour le travail d'équipe #1
         du cours Développement multimédia 420-219-SF.
-      </p>
-      <p>
-      <a href="erreur404.php">Amenez moi à la page d'erreur</a>
       </p>
     </main>
     <footer>
