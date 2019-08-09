@@ -76,22 +76,27 @@ if (isset($_POST['txtUtilisateur']))
 	  $errAdresse = "Vous devez entrez une addresse.";
     }
 	
-	if (!preg_match('\b(?([A-Z])[^DFIOQUWZ])\d(?([A-Z])[^DFIOQU])\d(?([A-Z])[^DFIOQUWZ])\d\b', $postal)) // Regex de regexlib.com
+	if (!preg_match('/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/', $postal)) // Regex simple de regexlib.com
 	{
       $erreur = true;
 	  $errPostal = "Vous devez entrer un code postal du format A1A 1A1";
     }
 	
-	if (!preg_match('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/', $courriel)) // Regex de W3C
+	if (!filter_var($courriel, FILTER_VALIDATE_EMAIL))  // validation email php de W3School
 	{
       $erreur = true;
 	  $errCourriel = "Vous devez entrez une couriel valide.";
-    }
+	}
 
 	if ($pass1 == "")
     {
       $erreur = true;
 	  $errPass1 = "Vous devez entrer un mot de passe.";
+    }
+	else if (strlen($pass1) <6 )
+    {
+      $erreur = true;
+	  $errPass1 = "Votre mot de passe doit être au moins 6 charactères";
     }
 	else if ($pass2 == "")
     {
@@ -103,7 +108,5 @@ if (isset($_POST['txtUtilisateur']))
       $erreur = true;
 	  $errPass2 = "Les deux mots de passes doivent être pareil.";
     }
-
-
   } 
   ?>
