@@ -187,7 +187,7 @@ footer h3{
     width: 165px;
     height: 130px;
 }
-#errUtilisateur, #errMotDePasse, #errMotDePasseRep, #errPrenom, #errNom, #errCourriel, #errNaissance, #errInterets {
+#errUtilisateur, #errMotDePasse, #errMotDePasseRep, #errPrenom, #errNom, #errCourriel, #errNaissance, #errInterets, #errProvince, #errVille, #errAdresse, #errPostal {
 color: red;
 }
 #errInterets{
