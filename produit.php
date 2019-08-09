@@ -1,4 +1,6 @@
+
 <?php
+	session_start();
     include('lister-produit.php');
 ?>
 <!DOCTYPE html>

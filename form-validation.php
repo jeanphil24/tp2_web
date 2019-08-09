@@ -23,11 +23,11 @@
     $errCourriel = "";
     $errPass1 = "";
     $errPass2 = "";
+	$erreur = false;
 
 if (isset($_POST['txtUtilisateur']))
   { 
     // variables du formulaire
-    $erreur = false;
     $user = $txtUser = htmlspecialchars($_POST['txtUtilisateur']);
     $prenom = $txtPrenom = htmlspecialchars($_POST['txtPrenom']);
     $nom = $txtNom =  htmlspecialchars($_POST['txtNom']);
@@ -57,12 +57,6 @@ if (isset($_POST['txtUtilisateur']))
       $erreur = true;
 	  $errNom = "Vous devez entrez un nom.";
     }
-	
-	//	if ($province == "") pas nécessaire!?
-    //{
-      //$erreur = true;
-	  //$errProvince = "Vous devez entrez une province Canadienne.";
-    //}
 	
 	if ($ville == "")
     {
@@ -108,5 +102,13 @@ if (isset($_POST['txtUtilisateur']))
       $erreur = true;
 	  $errPass2 = "Les deux mots de passes doivent être pareil.";
     }
+	
+	if ($erreur == false)
+	{
+		$_SESSION['connected'] = $user; 
+	}
+	
+	
+	
   } 
   ?>

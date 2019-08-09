@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
 <html lang="fr">
