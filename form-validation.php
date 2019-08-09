@@ -4,7 +4,7 @@
 	$txtUser = "";
     $txtPrenom ="";
     $txtNom = "";
-    $txtProvince = "";
+    $selProvince = "";
     $txtVille = "";
     $txtAdresse = "";
     $txtPostal = "";
@@ -31,7 +31,7 @@ if (isset($_POST['txtUtilisateur']))
     $user = $txtUser = htmlspecialchars($_POST['txtUtilisateur']);
     $prenom = $txtPrenom = htmlspecialchars($_POST['txtPrenom']);
     $nom = $txtNom =  htmlspecialchars($_POST['txtNom']);
-    $province = $txtProvince =  htmlspecialchars($_POST['txtProvince']);
+    $selProvince =  htmlspecialchars($_POST['selProvince']);
     $ville = $txtVille =  htmlspecialchars($_POST['txtVille']);
     $adresse = $txtAdresse =  htmlspecialchars($_POST['txtAdresse']);
     $postal = $txtPostal =  htmlspecialchars($_POST['txtPostal']);
@@ -58,11 +58,11 @@ if (isset($_POST['txtUtilisateur']))
 	  $errNom = "Vous devez entrez un nom.";
     }
 	
-	if ($province == "")
-    {
-      $erreur = true;
-	  $errProvince = "Vous devez entrez une province Canadienne.";
-    }
+	//	if ($province == "") pas nécessaire!?
+    //{
+      //$erreur = true;
+	  //$errProvince = "Vous devez entrez une province Canadienne.";
+    //}
 	
 	if ($ville == "")
     {

@@ -29,15 +29,15 @@
       <form action="inscription.php" method="POST" id="formInscription">
         
         <div class="formulaire">
-          <label class="labelInfo" for="txtUtilisateur">Nom d'utilisateur :</label>
-          <input type="text" id="txtUtilisateur" name="txtUtilisateur" value="<?php echo $txtUser ?>"/>
-          <span id="errUtilisateur"> <?php echo $errUser ?> </span>
+			<label class="labelInfo" for="txtUtilisateur">Nom d'utilisateur :</label>
+			<input type="text" id="txtUtilisateur" name="txtUtilisateur" value="<?php echo $txtUser ?>"/>
+			<span id="errUtilisateur"> <?php echo $errUser ?> </span>
         </div>
         
         <div class="formulaire">
-          <label class="labelInfo" for="txtPrenom">Prénom :</label>
-          <input type="text" id="txtPrenom" name="txtPrenom" value="<?php echo $txtPrenom ?>"/>
-          <span id="errPrenom"><?php echo $errPrenom ?></span>
+			<label class="labelInfo" for="txtPrenom">Prénom :</label>
+			<input type="text" id="txtPrenom" name="txtPrenom" value="<?php echo $txtPrenom ?>"/>
+			<span id="errPrenom"><?php echo $errPrenom ?></span>
         </div>
         
         <div class="formulaire">
@@ -46,11 +46,26 @@
             <span id="errNom"><?php echo $errNom ?></span>
         </div>
 
-        <div class="formulaire">
-          <label class="labelInfo" for="txtProvince">Province :</label>
-          <input type="text" id="txtProvince" name="txtProvince" value="<?php echo $txtProvince ?>"/>
-          <span id="errProvince"><?php echo $errProvince ?></span>
-        </div>
+		
+		<div class="formulaire">
+			<label class="labelInfo" for="selProvince">Province :</label>
+			<select id="selProvince" name="selProvince">
+				<option value="AB"<?php if($selProvince=="AB") echo 'selected="selected"'; ?>>Alberta</option>
+				<option value="BC"<?php if($selProvince=="BC") echo 'selected="selected"'; ?>>Colombie-Britannique</option>		
+				<option value="MB"<?php if($selProvince=="MB") echo 'selected="selected"'; ?>>Manitoba</option>
+				<option value="NB"<?php if($selProvince=="NB") echo 'selected="selected"'; ?>>Nouveau-Brunswick</option>
+				<option value="NL"<?php if($selProvince=="NL") echo 'selected="selected"'; ?>>Terre-Neuve-et-Labrador</option>
+				<option value="NS"<?php if($selProvince=="NS") echo 'selected="selected"'; ?>>Nouvelle-Écosse</option>
+				<option value="ON"<?php if($selProvince=="ON") echo 'selected="selected"'; ?>>Ontario</option>
+				<option value="PE"<?php if($selProvince=="PE") echo 'selected="selected"'; ?>>Île-du-Prince-Édouard</option>
+				<option value="QC"<?php if($selProvince=="QC") echo 'selected="selected"'; ?>>Quebec</option>
+				<option value="SK"<?php if($selProvince=="SK") echo 'selected="selected"'; ?>>Saskatchewan</option>
+				<option value="NT"<?php if($selProvince=="NT") echo 'selected="selected"'; ?>>Territoires du Nord-Ouest</option>
+				<option value="NU"<?php if($selProvince=="NU") echo 'selected="selected"'; ?>>Nunavut</option>
+				<option value="YT"<?php if($selProvince=="YT") echo 'selected="selected"'; ?>>Yukon</option>
+			</select>
+		</div>
+
                 
         <div class="formulaire">
           <label class="labelInfo" for="txtVille">Ville :</label>
@@ -78,7 +93,7 @@
         
         <div class="formulaire">
           <label class="labelInfo" for="txtMotDePasse">Mot de passe :</label>
-          <input type="password" id="txtMotDePasse" name="txtMotDePasse" value="<?php echo $txtPass1 ?>"/>
+          <input type="password" id="txtMotDePasse" name="txtMotDePasse" value="<?php echo $txtPass1 ?>" placeholder="Minimun 6 charactères"/>
           <span id="errMotDePasse"><?php echo $errPass1 ?></span>
         </div>
 
