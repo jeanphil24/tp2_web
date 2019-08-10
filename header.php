@@ -3,11 +3,12 @@
 <?php  
 if (!isset($_SESSION['connected'])) 
 {	
-	echo '<a href="compte.php"><div id="dejaMembre"><p>Mon compte' . $_SESSION['connected'] .' $</p></div> </a>';
+	echo '<a href="inscription.php"><div id="dejaMembre"><p>Déjà membre ?</p><p>Cliquez ici !</p></div> </a>';
+
 }
 else
 {
-	echo '<a href="inscription.php"><div id="dejaMembre"><p>Déjà membre ?</p><p>Cliquez ici !</p></div> </a>';
+	echo '<a href="compte.php"><div id="dejaMembre"><p>Mon compte</p></div> </a>';
 }
 	
 ?>
