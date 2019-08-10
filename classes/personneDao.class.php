@@ -11,11 +11,11 @@ class PersonneDao
  
   public function add(Personne $perso)
   {
-    $q = $this->_db->prepare('INSERT INTO clients (no, nom, prenom, province, ville, adresse, codePostal, email, motPasse) 
-									VALUES (:no, :nom, :prenom, :province, :ville, :adresse, :codePostal, :email, :motPasse )');
+    $q = $this->_db->prepare('INSERT INTO clients (nom, prenom, adresse, ville, province, codePostal, login, motPasse, email) 
+									VALUES (:nom, :prenom, :adresse, :ville, :province, :codePostal, :login ,:motPasse, :email)');
 	
 	//ou avec bindValue, c'est équivalent
-	//$q->execute(array(	"login" => $perso->getLogin(),
+	//$q->execute(array("login" => $perso->getLogin(),
 	//						"nom" => $perso->getNom(), 
 	//						"prenom" => $perso->getPrenom(),
 	//						"province" => $perso->getProvince(), 
@@ -25,15 +25,15 @@ class PersonneDao
 	//						"email" => $perso->getEmail(), 
 	//						"motPasse" => $perso->getMotPasse()));
    
-	$q->bindValue(':login', $perso->getLogin());
-    $q->bindValue(':prenom', $perso->getPrenom());
-	$q->bindValue(':nom', $perso->getNom());
-    $q->bindValue(':province', $perso->getProvince());
-	$q->bindValue(':ville', $perso->getVille());
-    $q->bindValue(':adresse', $perso->getAdresse());
-	$q->bindValue(':codePostal', $perso->getCodePostal());
-    $q->bindValue(':email', $perso->getEmail());
-	$q->bindValue(':motPasse', $perso->getMotPasse());
+	$q->bindValue(":login", $perso->getLogin());
+    $q->bindValue(":prenom", $perso->getPrenom());
+	$q->bindValue(":nom", $perso->getNom());
+    $q->bindValue(":province", $perso->getProvince());
+	$q->bindValue(":ville", $perso->getVille());
+    $q->bindValue(":adresse", $perso->getAdresse());
+	$q->bindValue(":codePostal", $perso->getCodePostal());
+    $q->bindValue(":email", $perso->getEmail());
+	$q->bindValue(":motPasse", $perso->getMotPasse());
 	
     $q->execute();
 	$q->closeCursor();
