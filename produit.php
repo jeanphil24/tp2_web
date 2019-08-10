@@ -1,7 +1,12 @@
-
 <?php
+  // la page individuel des produits est accessible qu'avec un parametre id
+  if( !isset($_GET['id']) ){
+
+    header('Location: index.php');
+    exit();
+  }
 	session_start();
-    include('lister-produit.php');
+  include('trouver-produit.php');
 ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
@@ -28,11 +33,12 @@
     </nav>
     <main>
       <h2>
-      
+        <?php
+          echo $produit['nom'];
+        ?>
       </h2>
       <p>
-        Voici notre modeste site web consacré au café pour le travail d'équipe #1
-        du cours Développement multimédia 420-219-SF.
+        to-do : page de produit individuel
       </p>
     </main>
     <footer>

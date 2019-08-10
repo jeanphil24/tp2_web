@@ -197,8 +197,8 @@ color: red;
 
 #gridVente{
     display: grid;
-    grid-template-columns: 240px 240px 240px 240px;
-    grid-template-rows: 200px 200px;
+    grid-template-columns: 320px 320px 320px;
+    grid-template-rows: 220px 220px 220px 220px;
 }
 
 #gridVente div{
