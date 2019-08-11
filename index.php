@@ -28,9 +28,6 @@
         Voici notre modeste site web consacré au café pour le travail d'équipe #1
         du cours Développement multimédia 420-219-SF.
       </p>
-      <p>
-      <a href="erreur404.php">Amenez moi à la page d'erreur</a>
-      </p>
     </main>
     <footer>
       <?php

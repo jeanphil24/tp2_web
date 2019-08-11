@@ -32,14 +32,38 @@
       ?>
     </nav>
     <main>
-      <h2>
-        <?php
-          echo $produit['nom'];
-        ?>
-      </h2>
-      <p>
-        to-do : page de produit individuel
-      </p>
+        
+        <div  id="gridProduit">
+          <div>
+            <?php
+              echo '<img src="images/vente/' . $produit['image'] . '-l.jpg" alt="' . $produit['nom'] . '" />';
+            ?>
+          </div>
+          <div>
+            <h2>
+              <?php
+                echo $produit['nom'];
+              ?>
+            </h2>
+            <p class="textDescription">
+              <?php
+                echo $produit['description'];
+              ?>
+            </p>
+            <p id="prixProduit">
+              <?php
+                echo $produit['prix'] . '$';
+              ?>
+            </p>
+            <p id="textQuantite">
+              Quantité
+            </p>
+            <form action="#" method="POST">
+              <input type="text" id="txtAchat" name="txtAchat" value="1"/>
+              <input id="iconePanierProduit" type="image" src="images/cartIcon.png" alt="Ajouter au panier"/>
+            </form>
+          </div>
+        </div>
     </main>
     <footer>
       <?php

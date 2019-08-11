@@ -52,6 +52,11 @@
         <a href="http://markomilacic.me/remonter-en-haut-de-page-html.html"
           >http://markomilacic.me/</a>
       </p>
+      <p>
+        Photo page 404 :
+        <a href="https://quebec.huffingtonpost.ca/alex-sereno/5-resolutions-cafe-2019_a_23628845/"
+          >https://quebec.huffingtonpost.ca/</a>
+      </p>
       <h3>Galerie photo</h3>
       <p>
         Image #1 :
@@ -85,32 +90,7 @@
       </p>
 
 
-      <h3>Vente</h3>
-      <p>
-        Icone panier :
-        <a href="https://www.iconfinder.com/icons/218102/add_cart_plus_shopping_shopping_cart_icon"
-          >https://www.iconfinder.com</a>
-      </p>
-      <p>
-        weaponCup :
-        <a href="https://mozostore.com/product/15-oz-white-mug-novelty-11-oz-15-oz-programming-coding-gaming-software-engineer-hardware-technician-genius-geek-nerd-coffee-mug-cup-is-perfect-programmer-gift/"
-          >https://mozostore.com</a>
-      </p>
-      <p>
-        Tasse Rouge:
-        <a href="http://www.trzcacak.rs/file/max/4/45745_coffee-mug-png.png"
-          >http://www.trzcacak.rs</a>
-      </p>
-      <p>
-        Troubleshooting 101 :
-        <a href="https://images-na.ssl-images-amazon.com/images/I/41FbHSeT64L.jpg"
-          >https://www.amazon.com</a>
-      </p>
-      <p>
-        Thermos:
-        <a href="https://img2.gratispng.com/20180323/ucw/kisspng-thermoses-stainless-steel-vacuum-insulated-panel-t-coffee-jar-5ab4ca9722d121.0408101415217977831426.jpg"
-          >https://img2.gratispng.com/</a>
-      </p>
+      
 
 
 
@@ -121,7 +101,14 @@
         <a href="https://fr.wikipedia.org/wiki/Caf%C3%A9"
           >https://fr.wikipedia.org/</a
         >
-      </p>      
+      </p>
+      <h3>Boutique</h3>
+      <p>
+        Les photos de produit et leurs descriptions :
+        <a href="https://bruleriedescantons.com/"
+          >https://bruleriedescantons.com/</a>
+      </p>
+      
     </main>
     <footer>
       <?php

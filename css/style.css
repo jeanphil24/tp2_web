@@ -76,7 +76,7 @@ nav ul li:hover{
     margin-right: auto;
     text-align: center;
 }
-h2{
+main > h2{
     display: block;
     width: 960px;
     margin-top: 40px;
@@ -230,4 +230,43 @@ margin: auto auto;
 
 .text-boutique{
     line-height: 30pt;
+}
+
+#gridProduit{
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: 480px 480px;
+    grid-template-rows: 586px;
+}
+
+#gridProduit > div > h2{
+    width: 480px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    color:rgb(160, 110, 77);
+    border-bottom: 1px solid rgba(160, 110, 77);
+}
+.textDescription{
+    padding-left: 10px;
+}
+#txtAchat{
+    margin-left: 20px;
+    margin-right: 10px;
+    width: 30px;
+    text-align: center;
+}
+#prixProduit{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 15pt;
+}
+#iconePanierProduit{
+    vertical-align: middle;
+}
+#textQuantite{
+    padding-left: 10px;
+    margin-bottom: 0px;
 }
