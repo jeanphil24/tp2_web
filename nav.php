@@ -1,3 +1,11 @@
+<div>
+        <div id="recherche">
+                <form action="resultats-recherche.php" method="GET">
+                        <input type="text" id="txtRecherche" name="txtRecherche" value=""/>
+                        <input id="iconeRecherche" type="image" src="images/loupe.png" alt="icone loupe"/>
+                </form>
+        </div>
+</div>
 <ul>
         <li class="item-menu"><a href="index.php">Accueil</a></li>
         <li class="item-menu"><a href="galerie.php">Galerie photo</a></li>

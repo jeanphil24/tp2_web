@@ -6,7 +6,7 @@
         exit();
     }
 
-    include('class-produitMagasin.php'); 
+    require "classes/produitMagasin.class.php";
     include('connexion.php');
     $produit;
     $produitTrouve = false;

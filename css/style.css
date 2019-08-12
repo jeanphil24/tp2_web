@@ -47,8 +47,12 @@ header p{
     padding-top: 20px;
     padding-right: 20px;
 }
-nav ul{
+nav{
     background-color: rgb(221, 202, 188);
+    display: grid;
+    grid-template-rows: 46px, 46px;
+}
+nav ul{
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto ;
     grid-template-rows: 46px;
@@ -58,7 +62,7 @@ nav ul{
 }
 nav li{
     list-style-type: none;    
-    background-color: rgb(221, 202, 188);
+    
 }
 nav a{
     display: block;
@@ -198,12 +202,13 @@ color: red;
 #gridVente{
     display: grid;
     grid-template-columns: 320px 320px 320px;
-    grid-template-rows: 220px 220px 220px 220px;
+    margin-top: 70px;
 }
 
 #gridVente div{
     margin: auto auto;
     align-content: center;
+    height: 220px;
 }
 
 .icones{
@@ -269,4 +274,17 @@ margin: auto auto;
 #textQuantite{
     padding-left: 10px;
     margin-bottom: 0px;
+}
+#recherche{
+    float: right;
+    margin-right: 20px;
+}
+#iconeRecherche{
+    vertical-align: middle;
+}
+#txtRecherche{
+    line-height: 20px;
+}
+.gras{
+    font-weight: bold;
 }

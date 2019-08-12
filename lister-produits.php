@@ -1,6 +1,6 @@
 <?php
     
-    include('class-produitMagasin.php'); 
+    require "classes/produitMagasin.class.php";
     include('connexion.php');
     $listeProduit;
     $nombreProduits = 0;
