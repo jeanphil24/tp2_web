@@ -38,12 +38,11 @@ header p{
     margin-top: 0px;
     margin-bottom: 0px;
 }
-#dejaMembre{
-    display: block;
+#dejaMembre {
     float: right;
     text-decoration: underline;
     color : rgb(160, 110, 77);
-    text-align: right;
+    vertical-align: top;
     padding-top: 20px;
     padding-right: 20px;
 }
@@ -279,7 +278,7 @@ margin: auto auto;
     margin-bottom: 0px;
 }
 #recherche{
-    display: inline;
+    display: inline-block;
     margin-right: 20px;
 }
 #txtRecherche{
@@ -287,16 +286,27 @@ margin: auto auto;
     vertical-align: middle;
     margin-bottom: 31px;
 }
+
+#searchbar{
+    padding: 15px 0px;
+    float:right;
+    display: block;
+}
+
 .gras{
     font-weight: bold;
 }
 #top-menu{
     height: 40px;
+    margin-left:auto; 
+    margin-right:38px;
 }
+
+
 #lienPanier{
-    display: inline-block;
+    display: inline;
     font-weight: bold;
-    vertical-align: middle;
+    vertical-align: top;
     margin: auto;
     line-height: 46px;
 }
@@ -333,7 +343,7 @@ button:hover {
 .container {
     width:400px;
     padding: 15px;
-    margin: 0 auto;
+    margin: 0;
   }
   
 .creerCompte {

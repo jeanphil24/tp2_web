@@ -25,8 +25,7 @@
     <main>
 
     <h2>Login</h2>
- 
-    <form action="compte.php">
+    <form action="compte.php"method="POST" id="formlogin">
 
      <div class="container">
         <label for="uname"><b>Username</b></label>

@@ -1,12 +1,7 @@
 <div id="top-menu">
-        
-        <form id="recherche" action="resultats-recherche.php" method="GET">
-                <input type="text" id="txtRecherche" name="txtRecherche" value=""/>
-                <input id="iconeRecherche" type="image" src="images/loupe.png" alt="icone loupe"/>
-        </form>
         <a href="#" id="lienPanier">Votre panier(X) </a>
-        <img  src="images/panier.png" alt="panier d'achat">
-        
+        <img src="images/panier.png" alt="panier d'achat">
+        <a href="se-connecter.php" id="lienPanier">Login </a>
 </div>
 <ul id="menu">
         <li class="item-menu"><a href="index.php">Accueil</a></li>
@@ -17,3 +12,20 @@
         <li class="item-menu"><a href="plan.php">Plan du site</a></li>
         <li class="item-menu"><a href="inscription.php">Inscription</a></li>
 </ul>
+
+
+
+
+<!-- ?php  
+        if (!isset($_SESSION['connected'])) 
+        {	
+	        echo '<a href="se-connecter.php"><div id="dejaMembre"><p>Login</p></a>';
+        }
+        else
+        {
+	        echo '<a href="compte.php"><div id="dejaMembre"><p>Mon compte</p> </a>';
+        }
+        ?>    
+
+
+-->

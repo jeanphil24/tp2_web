@@ -1,4 +1,10 @@
-<?php session_start() ?>
+<?php session_start();
+		if(!isset($_SESSION['user'])) 
+		{
+			header('Location:se-connecter.php');
+			exit;
+		}
+	 ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
 <html lang="fr">
@@ -26,14 +32,14 @@
      
 	 
 	 <?php
-		if(!isset($_SESSION['connected'])) 
+		if(!isset($_SESSION['user'])) 
 		{
 			header('Location:index.php');
 			exit;
 		}
 		else
 		{
-			echo "Bonjour " . $_SESSION['connected'];
+			echo "Bonjour " . $_SESSION['user'];
 		}
 	 ?>
 	 
