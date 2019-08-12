@@ -4,8 +4,9 @@
                 <input type="text" id="txtRecherche" name="txtRecherche" value=""/>
                 <input id="iconeRecherche" type="image" src="images/loupe.png" alt="icone loupe"/>
         </form>
-        <a href="#" id="lienPanier">Votre panier(X) </a>
-        <img  src="images/panier.png" alt="panier d'achat">
+        <a href="panier.php" id="lienPanier">Votre panier( <?php echo "X"; ?> ) </a>
+        <a href="panier.php" id="iconePanierMenu"><img src="images/panier.png" alt="panier d'achat"></a>
+        
         
 </div>
 <ul id="menu">
