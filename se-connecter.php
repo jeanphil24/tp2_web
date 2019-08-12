@@ -23,23 +23,25 @@
       ?>
     </nav>
     <main>
-      <?php
-		if(isset($_POST['user']) ) 
-			if (($_POST['user'] == $user) && ($_POST['password'] == $password))
-			{
-				{
-					$_SESSION['Connected'] = $_POST['user'];
-					header('Location:secret.php');
-					exit;
-				}
-			}
-			else 
-			{   
-				echo "Erreur. Veuillez recommencer";
-				include('inscription.php');
-			}
-		
-		?> 
+
+    <h2>Login</h2>
+ 
+    <form action="compte.php">
+
+     <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input class="loginText" type="text" placeholder="Enter Username" name="uname">
+
+        <label for="psw"><b>Password</b></label>
+        <input class="loginText" type="password" placeholder="Enter Password" name="psw">
+            
+        <button id="login" type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        <a class= "creerCompte" href="inscription.php">Créer un compte</a>
+    </div>
+</form>
     </main>
     <footer>
       <?php

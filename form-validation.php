@@ -135,16 +135,13 @@ if (isset($_POST['txtUtilisateur']))
 			//{
 			//	echo '<li>'.$personne->getNom().'</li>';
 			//}
-			//echo '</ul>';
-			
+			//echo '</ul>';	
         } 
         catch (Exception $exc) {
             exit( "Erreur :<br />\n" .  $exc->getMessage() );
         }           
        
-		$db = null;
-		
+		$db = null;	
 	}
-	
   } 
   ?>
