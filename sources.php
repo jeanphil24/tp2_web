@@ -57,6 +57,11 @@
         <a href="https://quebec.huffingtonpost.ca/alex-sereno/5-resolutions-cafe-2019_a_23628845/"
           >https://quebec.huffingtonpost.ca/</a>
       </p>
+      <p>
+        Icone de la loupe :
+        <a href="https://www.iconfinder.com/icons/302326/find_magnifier_magnifying_glass_search_zoom_icon"
+          >https://www.iconfinder.com/</a>
+      </p>
       <h3>Galerie photo</h3>
       <p>
         Image #1 :
