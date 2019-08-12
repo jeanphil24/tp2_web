@@ -52,7 +52,7 @@ nav{
     display: grid;
     grid-template-rows: 46px, 46px;
 }
-nav ul{
+#menu{
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto ;
     grid-template-rows: 46px;
@@ -61,24 +61,27 @@ nav ul{
     padding-left: 0;
 }
 nav li{
-    list-style-type: none;    
-    
+    list-style-type: none;
+}
+menu > li > a{
+    line-height: 46px;
 }
 nav a{
     display: block;
     text-decoration:none;
     font-weight: bold;
-    color: black;
-    line-height: 46px;
-    width: 142.85px;
+
 }
-nav ul li:hover{
+#menu > li:hover{
     border-bottom: 7px solid rgba(160, 110, 77);
 }
 .item-menu{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    vertical-align: middle;
+    line-height: 46px;
+    width: 142.85px;
 }
 main > h2{
     display: block;
@@ -276,15 +279,24 @@ margin: auto auto;
     margin-bottom: 0px;
 }
 #recherche{
-    float: right;
+    display: inline;
     margin-right: 20px;
 }
-#iconeRecherche{
-    vertical-align: middle;
-}
 #txtRecherche{
-    line-height: 20px;
+    line-height: 25px;
+    vertical-align: middle;
+    margin-bottom: 31px;
 }
 .gras{
     font-weight: bold;
+}
+#top-menu{
+    height: 40px;
+}
+#lienPanier{
+    display: inline-block;
+    font-weight: bold;
+    vertical-align: middle;
+    margin: auto;
+    line-height: 46px;
 }

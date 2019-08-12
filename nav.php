@@ -1,12 +1,14 @@
-<div>
-        <div id="recherche">
-                <form action="resultats-recherche.php" method="GET">
-                        <input type="text" id="txtRecherche" name="txtRecherche" value=""/>
-                        <input id="iconeRecherche" type="image" src="images/loupe.png" alt="icone loupe"/>
-                </form>
-        </div>
+<div id="top-menu">
+        
+        <form id="recherche" action="resultats-recherche.php" method="GET">
+                <input type="text" id="txtRecherche" name="txtRecherche" value=""/>
+                <input id="iconeRecherche" type="image" src="images/loupe.png" alt="icone loupe"/>
+        </form>
+        <a href="#" id="lienPanier">Votre panier(X) </a>
+        <img  src="images/panier.png" alt="panier d'achat">
+        
 </div>
-<ul>
+<ul id="menu">
         <li class="item-menu"><a href="index.php">Accueil</a></li>
         <li class="item-menu"><a href="galerie.php">Galerie photo</a></li>
         <li class="item-menu"><a href="vente.php">Boutique</a></li>

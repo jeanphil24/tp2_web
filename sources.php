@@ -62,6 +62,12 @@
         <a href="https://www.iconfinder.com/icons/302326/find_magnifier_magnifying_glass_search_zoom_icon"
           >https://www.iconfinder.com/</a>
       </p>
+      <p>
+        Icone du panier :
+        <a href="https://www.freepik.com/free-icon/shopping-cart_933785.htm"
+          >https://www.freepik.com/</a>
+      </p>
+      
       <h3>Galerie photo</h3>
       <p>
         Image #1 :
