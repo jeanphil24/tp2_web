@@ -2,6 +2,16 @@
 session_start();
 include('lister-produits.php');
 
+if( isset($_GET['id'] ){
+  if ( !isset($_SESSION['panier']) ){
+
+    $_SESSION['panier'] = new panier();
+  }
+  $_SESSION['panier']->ajouter( $_GET['id'], 1 );
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->

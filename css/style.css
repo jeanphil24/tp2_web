@@ -349,3 +349,6 @@ button:hover {
 .creerCompte {
     float:right;
   }
+  #iconePanierMenu{
+      display: inline;
+  }
