@@ -1,5 +1,4 @@
 <?php 
-
 require "classes/panier.class.php";
 require "classes/itemPanier.class.php";
 session_start();
@@ -28,11 +27,16 @@ session_start();
       ?>
     </nav>
     <main>
+    <?php 
+      if (isset($_POST['txtUtilisateur']))
+    ?>
+
+
 
     <h2>Login</h2>
     <form action="compte.php"method="POST" id="formlogin">
 
-     <div class="container">
+     <div class="loginform">
         <label for="uname"><b>Username</b></label>
         <input class="loginText" type="text" placeholder="Enter Username" name="uname">
 
