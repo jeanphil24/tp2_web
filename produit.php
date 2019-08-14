@@ -10,6 +10,15 @@ session_start();
     exit();
   }
   include('trouver-produit.php');
+
+  if ( !isset($_SESSION['panier']) ){
+
+    $_SESSION['panier'] = new panier();
+  }
+  if( isset($_POST['txtAchat']) ){
+    
+    $_SESSION['panier']->ajouter( $_GET['id'], $_POST['txtAchat'] );
+  }
 ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
@@ -61,7 +70,8 @@ session_start();
             <p id="textQuantite">
               Quantité
             </p>
-            <form action="#" method="POST">
+            <form action="<?php echo 'produit.php?id=' . $_GET['id'] ; ?>" method="POST">
+
               <input type="text" id="txtAchat" name="txtAchat" value="1"/>
               <input id="iconePanierProduit" type="image" src="images/cartIcon.png" alt="Ajouter au panier"/>
             </form>
