@@ -1,5 +1,5 @@
 <?php
-    require "classes/affichagePanier.class.php";
+    
     include('connexion.php');
     
 
@@ -18,7 +18,7 @@
     
             if( $ligne = $reponse -> fetch() ){
                 
-                $listeAffichage[] = new affichagePanier( $ligne['no'], $nombreAchat, $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'] );
+                $listeAffichage[] = new affichageProduit( $ligne['no'], $nombreAchat, $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'], $ligne['description']  );
 
             }
         }
@@ -34,7 +34,7 @@
     //affichage
 ?>
 <div id="divTablePanier">
-    <form action="#">
+    <form action="panier.php" method="POST">
         <table id="tablePanier">
             <tr class="gras">
                 <td>Produit</td>
@@ -54,7 +54,12 @@
         $totalDuProduit = $prix * $nombreDemande;
         $sousTotal = $sousTotal + $totalDuProduit;
 
-        echo '<tr><td><img src="images/vente/' . $image . '-mini.jpg" alt="' . $nom . '" />' . $nom . '</td><td>' . $prix . '$</td><td>' . $nombreDemande . '</td><td>'.  $totalDuProduit . '$</td></tr>';
+        echo '<tr>
+                <td><a href="produit.php?id=' . $id . '"><img src="images/vente/' . $image . '-mini.jpg" alt="' . $nom . '" />' . $nom .  '</a></td>
+                <td>' . $prix . '$</td>
+                <td><input type="text" class="txtQuantitePanier" id="' . $id . '" name="'. $id . '" value="' . $nombreDemande . '"/></td>
+                <td>'.  $totalDuProduit . '$</td>
+            </tr>';
     }
     $grandTotal = $sousTotal + 10;
 ?>

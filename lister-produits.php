@@ -1,6 +1,5 @@
 <?php
     
-    require "classes/produitMagasin.class.php";
     include('connexion.php');
     $listeProduit;
     //$nombreProduits = 0;
@@ -14,7 +13,7 @@
 
             //$nombreProduits = $nombreProduits + 1;
 
-            $listeProduit[] = new produitMagasin( $ligne['no'], $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'] );
+            $listeProduit[] = new affichageProduit( $ligne['no'], 0, $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'], $ligne['description'] );
         }
     }
     catch(Exception $e) {
@@ -25,4 +24,15 @@
     //fermer appel et base de données 
     $reponse->closeCursor();
     $db = null;
+
+    foreach ($listeProduit as $produit){
+        if ( $produit->getNbDisponible() > 0 ){
+
+            echo '<div>';
+            echo '<a href="produit.php?id=' . $produit->getID() . '"><img src="images/vente/' . $produit->getNomImage() . '-t.jpg" alt="' . $produit->getNom() . '" />';
+            echo '<span class="text-boutique">' . $produit->getNom() . ' ' . $produit->getPrix() . '$' . '</span></a>';
+            echo '<a href="vente.php?id=' . $produit->getID() . '"><img class="icones" src="images/cartIcon.png" alt="tiny icon"/></a>' ;
+            echo '</div>';
+        }
+      } 
 ?>

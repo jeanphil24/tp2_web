@@ -1,12 +1,5 @@
 <?php
-    // la page individuel des produits n'est accessible qu'avec un parametre id
-    if( !isset($_GET['id']) ){
-
-        header('Location: index.php');
-        exit();
-    }
-
-    require "classes/produitMagasin.class.php";
+    
     include('connexion.php');
     $produit;
     $produitTrouve = false;
@@ -18,8 +11,8 @@
 
         if( $ligne = $reponse -> fetch() ){
             
+            $produit = new affichageProduit( $ligne['no'], 0, $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'], $ligne['description']  );
             $produitTrouve = true;
-            $produit = $ligne;
         }
     }
     catch(Exception $e) {
@@ -34,7 +27,7 @@
     // si aucun produit ne correspont au id recherché
     if( !$produitTrouve ){
 
-        header('Location: index.php');
+        header('Location: vente.php');
         exit();
     }
 ?>

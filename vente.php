@@ -1,16 +1,19 @@
 <?php 
 require "classes/panier.class.php";
 require "classes/itemPanier.class.php";
+require "classes/affichageProduit.class.php";
+
 session_start();
 
-include('lister-produits.php');
-
-if ( !isset($_SESSION['panier']) ){
-
-  $_SESSION['panier'] = new panier();
-}
 if( isset($_GET['id']) ){
-  
+
+  if ( !isset($_SESSION['panier']) ){
+
+    $_SESSION['panier'] = new panier();
+  }
+
+  include('trouver-produit.php');
+
   $_SESSION['panier']->ajouter( $_GET['id'], 1 );
 }
 ?>
@@ -38,16 +41,14 @@ if( isset($_GET['id']) ){
     </nav>
     <main>
       <h2>Notre boutique</h2>
-      <div id="gridVente">
-      
-        <?php
-          foreach ($listeProduit as $produit){ 
-            echo '<div>';
-            echo '<a href="produit.php?id=' . $produit->getID() . '"><img src="images/vente/' . $produit->getNomImage() . '-t.jpg" alt="' . $produit->getNom() . '" />';
-            echo '<span class="text-boutique">' . $produit->getNom() . ' ' . $produit->getPrix() . '$' . '</span></a>';
-            echo '<a href="vente.php?id=' . $produit->getID() . '"><img class="icones" src="images/cartIcon.png" alt="tiny icon"/></a>' ;
-            echo '</div>';
+      <?php
+          if( isset($_GET['id']) ){ 
+            echo '<p class="vertSucces">'. $produit->getNom() . ' a été ajouté à votre panier !</p>';
           } 
+        ?>
+      <div id="gridVente">
+        <?php
+          include('lister-produits.php');
         ?>
       </div>
     </main>

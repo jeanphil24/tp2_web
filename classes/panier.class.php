@@ -51,7 +51,22 @@ class panier
         
             return sizeof( $this->getListeProduits() );
         }
+    }
+    public function combienDansPanier( $p_id ) {
+        
+        $indiceProduitTrouve = $this->trouverItemParID( $p_id );
+        $listeLocale = $this->getListeProduits();
+        $nombreDansPanier;
 
+        if( $indiceProduitTrouve == -1 ){
+            // il n'a pas été trouvé
+            return 0;
+        }
+        else{
+            // on l'a trouvé
+            $nombreDansPanier = $listeLocale[$indiceProduitTrouve]->getQuantite();
+            return $nombreDansPanier;
+        }
     }
 
     private function trouverItemParID( $p_idRecherche ) {

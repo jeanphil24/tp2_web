@@ -362,6 +362,7 @@ button:hover {
   }
   #tablePanier img{
       vertical-align: middle;
+      margin-right: 10px;
   }
   #tablePanierQuantite{
     width: 68px;
@@ -396,4 +397,15 @@ button:hover {
   }
   .colonneSoustotalPanier{
     width: 135px;
+  }
+  .vertSucces{
+      color: green;
+      font-weight: bold;
+  }
+  .txtQuantitePanier{
+      width: 55px;
+  }
+  .redBackorder{
+      color: red;
+      font-weight: bold;
   }

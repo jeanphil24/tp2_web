@@ -1,5 +1,5 @@
 <?php
-class produitMagasin
+class affichageProduit
     {
     // début classe
     private $id;
@@ -8,6 +8,14 @@ class produitMagasin
     }
     public function setID($p_id) {
      $this->id = $p_id;
+    }
+
+    private $nombreDemande;
+    public function getNombreDemande() {
+     return $this->nombreDemande;
+    }
+    public function setNombreDemande($p_nombreDemande) {
+     $this->nombreDemande = $p_nombreDemande;
     }
 
     private $nom;
@@ -41,14 +49,23 @@ class produitMagasin
     public function setNbDisponible($p_nbDisponible) {
      $this->nbDisponible = $p_nbDisponible;
     }
+    private $description;
+    public function getDescription() {
+     return $this->description;
+    }
+    public function setDescription($p_description) {
+     $this->description = $p_description;
+    }
 
-    public function __construct($p_id, $p_nom, $p_prix, $p_nomImage, $p_nbDisponible) {
+    public function __construct($p_id, $p_nombreDemande, $p_nom, $p_prix, $p_nomImage, $p_nbDisponible, $p_description) {
 
         $this->setID( $p_id );
+        $this->setNombreDemande( $p_nombreDemande );
         $this->setNom( $p_nom );
         $this->setPrix( $p_prix );
         $this->setNomImage( $p_nomImage );
         $this->setNbDisponible( $p_nbDisponible );
+        $this->setDescription($p_description);
     } 
 
     // fin classe

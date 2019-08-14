@@ -1,23 +1,42 @@
 <?php
 require "classes/panier.class.php";
 require "classes/itemPanier.class.php";
+require "classes/affichageProduit.class.php";
 session_start();
 
   // la page individuel des produits est accessible qu'avec un parametre id
   if( !isset($_GET['id']) ){
 
-    header('Location: index.php');
+    header('Location: vente.php');
     exit();
   }
   include('trouver-produit.php');
 
+  $achatSucces;
   if ( !isset($_SESSION['panier']) ){
 
     $_SESSION['panier'] = new panier();
   }
+
   if( isset($_POST['txtAchat']) ){
+
+    $dejaDansPanier = 0;
+    $numero = htmlspecialchars($_GET['id']);
+    $nombreAchat = htmlspecialchars($_POST['txtAchat']);
+
+    if ( isset($_SESSION['panier']) ){
+
+      $dejaDansPanier = $_SESSION['panier']->combienDansPanier( $numero );
+    }
+
+    if( ($nombreAchat + $dejaDansPanier) <= $produit->getNbDisponible() ){
+      $_SESSION['panier']->ajouter( $numero,  $nombreAchat );
+      $achatSucces = true;
+    }
+    else{
+      $achatSucces = false;
+    }
     
-    $_SESSION['panier']->ajouter( $_GET['id'], $_POST['txtAchat'] );
   }
 ?>
 <!DOCTYPE html>
@@ -44,37 +63,56 @@ session_start();
       ?>
     </nav>
     <main>
-        
+      
         <div  id="gridProduit">
           <div>
             <?php
-              echo '<img src="images/vente/' . $produit['image'] . '-l.jpg" alt="' . $produit['nom'] . '" />';
+              echo '<img src="images/vente/' . $produit->getNomImage() . '-l.jpg" alt="' . $produit->getNom() . '" />';
             ?>
           </div>
           <div>
             <h2>
               <?php
-                echo $produit['nom'];
+                echo $produit->getNom();
               ?>
             </h2>
             <p class="textDescription">
               <?php
-                echo $produit['description'];
+                echo $produit->getDescription();
               ?>
             </p>
             <p id="prixProduit">
               <?php
-                echo $produit['prix'] . '$';
+                echo $produit->getPrix() . '$';
               ?>
             </p>
-            <p id="textQuantite">
-              Quantité
-            </p>
-            <form action="<?php echo 'produit.php?id=' . $_GET['id'] ; ?>" method="POST">
+            <?php if( $produit->getNbDisponible() > 0 ){ ?>
+              <p id="textQuantite"> Quantité </p>
+              <form action="<?php echo 'produit.php?id=' . $_GET['id'] ; ?>" method="POST">
+                <input type="text" id="txtAchat" name="txtAchat" value="1"/>
+                <input id="iconePanierProduit" type="image" src="images/cartIcon.png" alt="Ajouter au panier"/>
+              </form>
+            <?php
+            }
+            else{
+              echo '<p class="redBackorder">Désolé, ce produit est temporairement en rupture d\'inventaire</p>';
+            }
 
-              <input type="text" id="txtAchat" name="txtAchat" value="1"/>
-              <input id="iconePanierProduit" type="image" src="images/cartIcon.png" alt="Ajouter au panier"/>
-            </form>
+        if( isset($_POST['txtAchat']) ){
+          if( $achatSucces ){
+
+            $textSucces = " ont été ";
+            if($_POST['txtAchat'] == 1){
+  
+              $textSucces = " a été ";
+            }
+            echo '<p class="vertSucces">' . $nombreAchat . ' x '. $produit->getNom() . $textSucces . 'ajouté à votre panier !</p>';
+          } else{
+            echo '<p class="redBackorder">Erreur, désolé la quantité totale demandée dépassait l\'inventaire</p>';
+          }
+          
+        }
+      ?>
           </div>
         </div>
     </main>
