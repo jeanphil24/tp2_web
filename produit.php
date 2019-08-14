@@ -12,31 +12,39 @@ session_start();
   }
   include('trouver-produit.php');
 
-  $achatSucces;
-  if ( !isset($_SESSION['panier']) ){
-
-    $_SESSION['panier'] = new panier();
-  }
 
   if( isset($_POST['txtAchat']) ){
 
-    $dejaDansPanier = 0;
-    $numero = htmlspecialchars($_GET['id']);
+    if ( !isset($_SESSION['panier']) ){
+
+      $_SESSION['panier'] = new panier();
+    }
+
+    $achatSucces;
+    $nombreNegatif;
+    $quantiteDansPanier = 0;
+    $numeroProduit = htmlspecialchars($_GET['id']);
     $nombreAchat = htmlspecialchars($_POST['txtAchat']);
+
+    if( $nombreAchat <= 0 ){
+      $nombreNegatif = true;
+    }
+    else{
+      $nombreNegatif = false;
+    }
 
     if ( isset($_SESSION['panier']) ){
 
-      $dejaDansPanier = $_SESSION['panier']->combienDansPanier( $numero );
+      $quantiteDansPanier = $_SESSION['panier']->combienDansPanier( $numeroProduit );
     }
 
-    if( ($nombreAchat + $dejaDansPanier) <= $produit->getNbDisponible() ){
-      $_SESSION['panier']->ajouter( $numero,  $nombreAchat );
+    if( ($nombreAchat + $quantiteDansPanier) <= $produit->getNbDisponible() ){
+      $_SESSION['panier']->ajouter( $numeroProduit,  $nombreAchat );
       $achatSucces = true;
     }
     else{
       $achatSucces = false;
     }
-    
   }
 ?>
 <!DOCTYPE html>
@@ -99,7 +107,7 @@ session_start();
             }
 
         if( isset($_POST['txtAchat']) ){
-          if( $achatSucces ){
+          if( $achatSucces && !$nombreNegatif){
 
             $textSucces = " ont été ";
             if($_POST['txtAchat'] == 1){
@@ -107,10 +115,11 @@ session_start();
               $textSucces = " a été ";
             }
             echo '<p class="vertSucces">' . $nombreAchat . ' x '. $produit->getNom() . $textSucces . 'ajouté à votre panier !</p>';
+          } elseif( !$achatSucces && !$nombreNegatif){
+            echo '<p class="redBackorder">Désolé, la quantité totale demandée dépassait l\'inventaire</p>';
           } else{
-            echo '<p class="redBackorder">Erreur, désolé la quantité totale demandée dépassait l\'inventaire</p>';
+            echo '<p class="redBackorder">Erreur, la quantité ne peut pas être 0 ou négative</p>';
           }
-          
         }
       ?>
           </div>

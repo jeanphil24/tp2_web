@@ -13,8 +13,21 @@ if( isset($_GET['id']) ){
   }
 
   include('trouver-produit.php');
+  $numeroProduit = $produit->getID();
 
-  $_SESSION['panier']->ajouter( $_GET['id'], 1 );
+  if ( isset($_SESSION['panier']) ){
+
+    $quantiteDansPanier = $_SESSION['panier']->combienDansPanier( $numeroProduit );
+  }
+
+  if( ( 1 + $quantiteDansPanier) <= $produit->getNbDisponible() ){
+    $_SESSION['panier']->ajouter( $numeroProduit, 1 );
+    $achatSucces = true;
+  }
+  else{
+    $achatSucces = false;
+  }
+
 }
 ?>
 <!DOCTYPE html>
@@ -42,8 +55,12 @@ if( isset($_GET['id']) ){
     <main>
       <h2>Notre boutique</h2>
       <?php
-          if( isset($_GET['id']) ){ 
-            echo '<p class="vertSucces">'. $produit->getNom() . ' a été ajouté à votre panier !</p>';
+          if( isset($_GET['id']) ){
+            if ( $achatSucces ){
+              echo '<p class="vertSucces">'. $produit->getNom() . ' a été ajouté à votre panier !</p>';
+            }else {
+              echo '<p class="redBackorder">Désolé, la quantité totale demandée dépassait l\'inventaire</p>';
+            }
           } 
         ?>
       <div id="gridVente">
