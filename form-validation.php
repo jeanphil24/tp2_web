@@ -118,7 +118,17 @@ if (isset($_POST['txtUtilisateur']))
 			
 			//Code pour ajouter
 			$client = new Personne($login,$prenom,$nom,$province,$ville,$adresse,$codePostal,$email,$motPasse);
-            $manager->add($client);
+            
+			$listePersonnes = $manager->getListePersonnes();
+
+			foreach($listePersonnes as $personne)
+			{
+				//if ()
+				
+				//echo '<li>'.$personne->getNom().'</li>';
+			}
+			
+			$manager->add($client);
 			//echo 'on enregistre :<br>';
 			//echo $client->getNom()."<br>";
 			//echo $client->getPrenom()."<br><br><br>";
@@ -129,7 +139,7 @@ if (isset($_POST['txtUtilisateur']))
 			//echo $personne->getNom()."<br>";
 			//echo $personne->getPrenom()."<br>";
 			
-			//$listePersonnes = $manager->getListePersonnes();
+			$listePersonnes = $manager->getListePersonnes();
 			//echo '<ul>';
 			//foreach($listePersonnes as $personne)
 			//{
