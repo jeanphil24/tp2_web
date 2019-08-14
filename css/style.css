@@ -350,5 +350,50 @@ button:hover {
     float:right;
   }
   #iconePanierMenu{
-      display: inline;
+    display: inline;
+  }
+  #tablePanier, #tablePanier th, #tablePanier td , #tableTotalPanier, #tableTotalPanier th, #tableTotalPanier td  {
+    border: 1px solid  rgb(221, 202, 188);
+    border-collapse: collapse;
+    padding: 10px;
+  }
+  #tablePanier{
+    width: 920px;
+  }
+  #tablePanier img{
+      vertical-align: middle;
+  }
+  #tablePanierQuantite{
+    width: 68px;
+  }
+  .colonnePrixTotal{
+    width: 110px;
+  }
+  .btnSubmitPagePanier{
+    display: block;
+    margin-top: 10px;
+    margin-left: 700px;
+    float: right;
+    background-color: rgb(160, 110, 77);
+    padding: 10px 15px;
+    color: white;
+    border: none ;
+    cursor: pointer;
+  }
+  #tableTotalPanier{
+    width: 420px;
+  }
+  #divTablePanier{
+    width: 920px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  #divTotalPanier{
+    float: right;
+    width: 420px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+  }
+  .colonneSoustotalPanier{
+    width: 135px;
   }

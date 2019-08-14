@@ -35,8 +35,8 @@ session_start();
             echo '<p>Le panier est vide.</p>
             <p><a href="vente.php">Cliquez ici pour visiter la page de notre boutique !</a></p>';
           }else{
-            //echo '<p>Bientot un panier !</p>';
             include('affichage-panier.php');
+            
           }
         }else{
           echo '<p>Le panier est vide.</p>
