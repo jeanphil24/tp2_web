@@ -21,7 +21,7 @@
 
             $nombreProduits = $nombreProduits + 1;
 
-            $listeProduitTrouve[$nombreProduits] = new produitMagasin($ligne['no'], $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte']);
+            $listeProduitTrouve[] = new produitMagasin($ligne['no'], $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte']);
         }
     }
     catch(Exception $e) {

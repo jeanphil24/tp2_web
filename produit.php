@@ -1,11 +1,14 @@
 <?php
+require "classes/panier.class.php";
+require "classes/itemPanier.class.php";
+session_start();
+
   // la page individuel des produits est accessible qu'avec un parametre id
   if( !isset($_GET['id']) ){
 
     header('Location: index.php');
     exit();
   }
-	session_start();
   include('trouver-produit.php');
 ?>
 <!DOCTYPE html>

@@ -1,67 +1,82 @@
 <?php
-require "classes/itemPanier.class.php";
 class panier
     {
+    //début classe
 
-    private $listeProduits;
+    private $ListeProduits;
     public function getListeProduits() {
-     return $this->listeProduits;
-    }
-    public function setListeProduits($p_listeProduits) {
-     $this->id = $p_listeProduits;
+
+     return $this->ListeProduits;
     }
 
-    private $nombreDeProduits;
-    public function getNombreDeProduits() {
-     return $this->nombreDeProduits;
-    }
-    public function setNombreDeProduits($p_nombreDeProduits) {
-     $this->nom = $p_nombreDeProduits;
+    public function setListeProduits($p_listeProduits) {
+
+     $this->ListeProduits = $p_listeProduits;
     }
 
     public function __construct() {
 
-        $listeProduit;
-        $this->setListeProduits( $listeProduit );
-        $this->setNombreDeProduits( 0 );
+        $liste = array();
+        $this->setListeProduits( $liste );
     }
     public function ajouter( $p_id, $p_quantite ) {
         
-        $produitTrouve = $this->trouverItemParID($p_id);
+        $indiceProduitTrouve = $this->trouverItemParID( $p_id );
+        $listeLocale = $this->getListeProduits();
 
-        if( $produitTrouve == -1 ){
+        if( $indiceProduitTrouve == -1 ){
             // il n'est pas deja dans la liste donc on l'ajoute
-            $nombreDeProduits = $nombreDeProduits + 1;
-            $listeProduits[$nombreDeProduits] = new itemPanier( $p_id, $p_quantite );
+            $listeLocale[] = new itemPanier( $p_id, $p_quantite );
         }
         else{
             // on modifie celui trouvé
-            $quantitePrecedente = $listeProduits[$produitTrouve]->getQuantite();
+            $quantitePrecedente = $listeLocale[$indiceProduitTrouve]->getQuantite();
             $total = $quantitePrecedente + $p_quantite;
 
-            $listeProduits[$produitTrouve]->setQuantite( $total );
+            $listeLocale[$indiceProduitTrouve]->setQuantite( $total );
         }
+
+        //mise a jour de la liste
+        $this->setListeProduits( $listeLocale );
     }
-    public function trouverItemParID( $p_id ) {
+    public function compterProduits() {
+        
+        $listeLocale = $this->getListeProduits();
+
+        if( empty( $listeLocale ) ){
+
+            return 0;
+        }
+        else{
+        
+            return sizeof( $this->getListeProduits() );
+        }
+
+    }
+
+    private function trouverItemParID( $p_idRecherche ) {
 
         $trouve = -1;
-        if( $nombreDeProduits == 0 ){
+        $listeLocale = $this->getListeProduits();
+
+        if( empty( $listeLocale ) ){
+
             return $trouve;
         }
         else{
-            
-            for ($ligne = 1; $ligne <= $nombreDeProduits; $ligne++) {
 
-                if( $listeProduits[$ligne]->getID() == $p_id ){
-                    $trouve = $ligne;
+            $nombreProduits = $this->compterProduits();
+            for ($i = 0; $i < $nombreProduits; $i++) {
+
+                $idCourant = $listeLocale[$i]->getID();
+                if( $idCourant == $p_idRecherche ){
+                    $trouve = $i;
                 }
             }
-            
             return $trouve;
         }
     } 
 
-
-
+    //fin classe
     }
     ?>

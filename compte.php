@@ -1,4 +1,8 @@
-<?php session_start();
+<?php 
+require "classes/panier.class.php";
+require "classes/itemPanier.class.php";
+session_start();
+
 		if(!isset($_SESSION['user'])) 
 		{
 			header('Location:se-connecter.php');

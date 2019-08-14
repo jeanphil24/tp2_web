@@ -1,4 +1,9 @@
-<?php session_start() ?>
+<?php 
+
+require "classes/panier.class.php";
+require "classes/itemPanier.class.php";
+session_start();
+?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
 <html lang="fr">
@@ -24,9 +29,20 @@
     </nav>
     <main>
       <h2>Votre panier</h2>
-      <p>
-        to-do : page du panier
-      </p>
+      <?php
+        if ( isset($_SESSION['panier']) ){
+          if( $_SESSION['panier']->compterProduits() == 0 ){
+            echo '<p>Le panier est vide.</p>
+            <p><a href="vente.php">Cliquez ici pour visiter la page de notre boutique !</a></p>';
+          }else{
+            //echo '<p>Bientot un panier !</p>';
+            include('affichage-panier.php');
+          }
+        }else{
+          echo '<p>Le panier est vide.</p>
+          <p><a href="vente.php">Cliquez ici pour visiter la page de notre boutique !</a></p>';
+          }
+      ?> 
     </main>
     <footer>
       <?php

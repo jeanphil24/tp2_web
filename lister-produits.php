@@ -3,7 +3,7 @@
     require "classes/produitMagasin.class.php";
     include('connexion.php');
     $listeProduit;
-    $nombreProduits = 0;
+    //$nombreProduits = 0;
 
     try {
 
@@ -12,9 +12,9 @@
 
         while( $ligne = $reponse -> fetch() ){
 
-            $nombreProduits = $nombreProduits + 1;
+            //$nombreProduits = $nombreProduits + 1;
 
-            $listeProduit[$nombreProduits] = new produitMagasin($ligne['no'], $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte']);
+            $listeProduit[] = new produitMagasin( $ligne['no'], $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'] );
         }
     }
     catch(Exception $e) {

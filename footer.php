@@ -2,7 +2,7 @@
         <h3>Qui sommes nous ?</h3>
         <ul class="listePuceImage">
           <li>Simon Paris</li>
-          <li>Jean-Phippe Proteau-Coulombe</li>
+          <li>Jean-Philippe Proteau-Coulombe</li>
         </ul>
       </div>
       <div>

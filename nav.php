@@ -1,5 +1,8 @@
 <div id="top-menu">
-        <a href="#" id="lienPanier">Votre panier(X) </a>
+        <a href="panier.php" id="lienPanier">Votre panier( 
+                <?php if ( isset($_SESSION['panier']) ){
+                        echo $_SESSION['panier']->compterProduits(); }
+                        else{ echo "0";} ?> ) </a>
         <img src="images/panier.png" alt="panier d'achat">
         <a href="se-connecter.php" id="lienPanier">Login </a>
 </div>
@@ -16,16 +19,3 @@
 
 
 
-<!-- ?php  
-        if (!isset($_SESSION['connected'])) 
-        {	
-	        echo '<a href="se-connecter.php"><div id="dejaMembre"><p>Login</p></a>';
-        }
-        else
-        {
-	        echo '<a href="compte.php"><div id="dejaMembre"><p>Mon compte</p> </a>';
-        }
-        ?>    
-
-
--->

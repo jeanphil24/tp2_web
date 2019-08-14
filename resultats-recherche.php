@@ -1,8 +1,9 @@
 <?php
 
+require "classes/panier.class.php";
+require "classes/itemPanier.class.php";
 session_start();
 include('recherche-produits.php');
-
 ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->

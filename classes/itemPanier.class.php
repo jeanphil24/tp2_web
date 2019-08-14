@@ -1,7 +1,7 @@
 <?php
-
 class itemPanier
     {
+        //début classe
 
         private $id;
         public function getID() {
@@ -26,6 +26,7 @@ class itemPanier
         $this->setID( $p_id );
         $this->setQuantite( $p_quantite );
     } 
+// fin classe
+}
 
-    }
-    ?>
+?>
