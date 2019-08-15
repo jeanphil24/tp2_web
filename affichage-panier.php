@@ -1,7 +1,5 @@
 <?php
-    
     include('connexion.php');
-    
 
     $listePanier = $_SESSION['panier']->getListeProduits();
     $listeAffichage;
@@ -74,8 +72,8 @@
     <?php 
         if (!isset($_SESSION['user']))
         {
+            $_SESSION['lastPage'] = 'facture.php';
             echo '<form action="login.php" method="POST">';
-            $_SESSION['redirection'] = 'facture.php';
         }
         else
         {

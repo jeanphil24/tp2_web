@@ -4,15 +4,20 @@
                         echo $_SESSION['panier']->compterProduits(); }
                         else{ echo "0";} ?> ) </a>
         <img src="images/panier.png" alt="panier d'achat">
-        
                 <?php 
+                        
+                        if ($_SERVER['PHP_SELF'] != '/tp2_web/login.php')
+                        {
+                                $_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
+                        }
+                        
                         if(isset($_SESSION['user']))
                         {
                                 echo '<a href="logout.php" id="lienPanier">Logout</a>';
                         }
                         else
                         {
-                                echo '<a href="se-connecter.php" id="lienPanier">Login</a>';
+                                echo '<a href="login.php" id="lienPanier">Login</a>';
                         }
                 ?>
 </div>

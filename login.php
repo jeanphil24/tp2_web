@@ -54,7 +54,7 @@ session_start();
               if ($personne->getMotPasse() == $password)
               {
                 $_SESSION['user'] = $username;
-                header('Location:compte.php');
+                header('Location:'. $_SESSION['lastPage']);
                 exit;
               }
               else

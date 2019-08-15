@@ -6,7 +6,7 @@ session_start();
 
 if(!isset($_SESSION['user'])) 
 {
-  header('Location:se-connecter.php');
+  header('Location:login.php');
   exit;
 }
 ?>
