@@ -23,7 +23,17 @@
         <li class="item-menu"><a href="cafe-monde.php">Histoire du café</a></li>
         <li class="item-menu"><a href="sources.php">Références</a></li>
         <li class="item-menu"><a href="plan.php">Plan du site</a></li>
-        <li class="item-menu"><a href="inscription.php">Inscription</a></li>
+        <?php 
+                if(isset($_SESSION['user']))
+                {
+                        echo '<li class="item-menu"><a href="compte.php">Mon Compte</a></li>';
+                }
+                else
+                {
+                        echo '<li class="item-menu"><a href="inscription.php">inscription</a></li>';
+                }
+        ?>
+
 </ul>
 
 
