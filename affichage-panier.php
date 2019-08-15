@@ -74,15 +74,14 @@
     <?php 
         if (!isset($_SESSION['user']))
         {
-            echo '<form action="se-connecter.php" method="POST">';
+            echo '<form action="login.php" method="POST">';
+            $_SESSION['redirection'] = 'facture.php';
         }
         else
         {
             echo '<form action="facture.php" method="POST">';
         }
     ?>
-    
-    <form action="#">
         <table id="tableTotalPanier">
             <tr> <td>Sous-total</td><td class="colonneSoustotalPanier"><?php echo $sousTotal; ?> $</td> </tr>
             <tr> <td>Expédition</td><td class="colonneSoustotalPanier">10$</td> </tr>
