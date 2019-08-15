@@ -45,25 +45,23 @@ class PersonneDao
 	$q->closeCursor();
   }
  
-  public function get($no)
+  public function get($login)
   {
-    $no = (int) $no;
- 
-	$q = $this->_db->prepare('SELECT no, nom, prenom, province, ville, adresse, codePostal, email, motPasse FROM clients WHERE no = :no');
-    $q->execute(array("no" => $no));
+	$q = $this->_db->prepare('SELECT nom, prenom, adresse, ville, province, codePostal, login, motPasse, email FROM clients WHERE login = :login');
+    $q->execute(array("login" => $login));
     
 	
 	//recuperation en tableau associatif, la cle est le nom de la colonne de la BD, la valeur est son contenu
 	$ligne = $q->fetch(PDO::FETCH_ASSOC);
 	$unClient = new Personne(	$ligne['login'], 
-									$ligne['prenom'],
-									$ligne['nom'], 
-									$ligne['province'],
-									$ligne['ville'], 
-									$ligne['adresse'],
-									$ligne['codePostal'], 
-									$ligne['email'],
-									$ligne['motPasse']);
+								$ligne['prenom'],
+								$ligne['nom'], 
+								$ligne['province'],
+								$ligne['ville'], 
+								$ligne['adresse'],
+								$ligne['codePostal'], 
+								$ligne['email'],
+								$ligne['motPasse']);
 	
 	$q->closeCursor();
 	

@@ -36,20 +36,25 @@ if(!isset($_SESSION['user']))
     </nav>
     <main>
      
-	 
 	 <?php
 		if(!isset($_SESSION['user'])) 
 		{
 			header('Location:index.php');
 			exit;
-		}
+    }
+    
 		else
 		{
-			echo "Bonjour " . $_SESSION['user'];
-      include ('connexion.php');
+      echo "Bonjour " . $_SESSION['user'];
     }
-    $db = null;
 	 ?>
+   <ul id="OptionsCompte">
+        <li class="option-compte"><a href="panier.php">Votre Panier</a></li>
+        <li class="option-compte"><a href="infoclient.php">Vos informations personnelles</a></li>
+        <li class="option-compte"><a href="anciennes-factures.php">Voir vos anciennes factures</a></li>
+
+  </ul>
+
 
     </main>
     <footer>
