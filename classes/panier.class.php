@@ -39,6 +39,43 @@ class panier
         //mise a jour de la liste
         $this->setListeProduits( $listeLocale );
     }
+    public function enlever( $p_id ) {
+        
+        $indiceProduitTrouve = $this->trouverItemParID( $p_id );
+        $listeLocale = $this->getListeProduits();
+
+        // si on l'a trouvé
+        if( $indiceProduitTrouve != -1 ){
+            
+            $listeLocale[ $indiceProduitTrouve ]->setQuantite( 0 );
+            $nouvelleListe = array();
+
+            foreach( $listeLocale as $produit ){
+
+                if( $produit->getQuantite() > 0 ){
+                    $nouvelleListe[] = $produit;
+                }
+            }
+        }
+
+        //mise a jour de la liste
+        $this->setListeProduits( $nouvelleListe );
+    }
+    public function enleverBackup( $p_id ) {
+        
+        $indiceProduitTrouve = $this->trouverItemParID( $p_id );
+        $listeLocale = $this->getListeProduits();
+
+        if( $indiceProduitTrouve != -1 ){
+            
+            unset( $listeLocale[$indiceProduitTrouve] );
+            $listeLocale = array_values( $listeLocale );
+        }
+
+        //mise a jour de la liste
+        $this->setListeProduits( $listeLocale );
+    }
+
     public function compterProduits() {
         
         $listeLocale = $this->getListeProduits();
@@ -48,10 +85,18 @@ class panier
             return 0;
         }
         else{
-        
-            return sizeof( $this->getListeProduits() );
+
+            $listeLocale = $this->getListeProduits();
+            $total = 0;
+
+            foreach($listeLocale as $produit){
+
+                $total = $total + $produit->getQuantite();
+            }
+            return $total;
         }
     }
+    
     public function combienDansPanier( $p_id ) {
         
         $indiceProduitTrouve = $this->trouverItemParID( $p_id );
@@ -68,7 +113,21 @@ class panier
             return $nombreDansPanier;
         }
     }
+    private function compterProduitsUnique() {
+        
+        $listeLocale = $this->getListeProduits();
 
+        if( empty( $listeLocale ) ){
+
+            return 0;
+        }
+        else{
+
+            $listeLocale = $this->getListeProduits();
+            
+            return sizeof( $listeLocale );
+        }
+    }
     private function trouverItemParID( $p_idRecherche ) {
 
         $trouve = -1;
@@ -80,7 +139,7 @@ class panier
         }
         else{
 
-            $nombreProduits = $this->compterProduits();
+            $nombreProduits = $this->compterProduitsUnique();
             for ($i = 0; $i < $nombreProduits; $i++) {
 
                 $idCourant = $listeLocale[$i]->getID();
@@ -91,7 +150,6 @@ class panier
             return $trouve;
         }
     } 
-
     //fin classe
     }
     ?>

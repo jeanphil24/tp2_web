@@ -27,7 +27,6 @@ if( isset($_GET['id']) ){
   else{
     $achatSucces = false;
   }
-
 }
 ?>
 <!DOCTYPE html>

@@ -409,3 +409,16 @@ button:hover {
       color: red;
       font-weight: bold;
   }
+  #viderPanier{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      float: right;
+    display: block;
+    text-align: center;
+    width: 160px;
+    background-color: rgb(160, 110, 77);
+    color: white;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }

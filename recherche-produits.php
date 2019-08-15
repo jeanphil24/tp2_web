@@ -7,7 +7,6 @@
     exit();
     }
 
-    require "classes/produitMagasin.class.php";
     include('connexion.php');
     $listeProduitTrouve;
     $nombreProduits = 0;
@@ -21,7 +20,7 @@
 
             $nombreProduits = $nombreProduits + 1;
 
-            $listeProduitTrouve[] = new produitMagasin($ligne['no'], $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte']);
+            $listeProduitTrouve[] = new affichageProduit($ligne['no'], 0, $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'], $ligne['description']);
         }
     }
     catch(Exception $e) {

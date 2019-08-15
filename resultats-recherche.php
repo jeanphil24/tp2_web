@@ -1,9 +1,35 @@
 <?php
-
 require "classes/panier.class.php";
 require "classes/itemPanier.class.php";
+require "classes/affichageProduit.class.php";
+
 session_start();
 include('recherche-produits.php');
+
+if( isset($_GET['id']) ){
+
+  if ( !isset($_SESSION['panier']) ){
+
+    $_SESSION['panier'] = new panier();
+  }
+
+  include('trouver-produit.php');
+  $numeroProduit = $produit->getID();
+
+  if ( isset($_SESSION['panier']) ){
+
+    $quantiteDansPanier = $_SESSION['panier']->combienDansPanier( $numeroProduit );
+  }
+
+  if( ( 1 + $quantiteDansPanier) <= $produit->getNbDisponible() ){
+    $_SESSION['panier']->ajouter( $numeroProduit, 1 );
+    $achatSucces = true;
+  }
+  else{
+    $achatSucces = false;
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
@@ -29,6 +55,15 @@ include('recherche-produits.php');
     </nav>
     <main>
       <h2>Résultat de la recherche</h2>
+      <?php
+          if( isset($_GET['id']) ){
+            if ( $achatSucces ){
+              echo '<p class="vertSucces">'. $produit->getNom() . ' a été ajouté à votre panier !</p>';
+            }else {
+              echo '<p class="redBackorder">Désolé, la quantité totale demandée dépassait l\'inventaire</p>';
+            }
+          } 
+        ?>
       <p>
         <?php
         if ($nombreProduits != 0){
@@ -47,7 +82,7 @@ include('recherche-produits.php');
                     echo '<div>';
                     echo '<a href="produit.php?id=' . $produit->getID() . '"><img src="images/vente/' . $produit->getNomImage() . '-t.jpg" alt="' . $produit->getNom() . '" />';
                     echo '<span class="text-boutique">' . $produit->getNom() . ' ' . $produit->getPrix() . '$' . '</span></a>';
-                    echo '<a href="#"><img class="icones" src="images/cartIcon.png" alt="tiny icon"/></a>' ;
+                    echo '<a href="resultats-recherche.php?txtRecherche=' . $_GET['txtRecherche'] .'&id=' . $produit->getID() . '"><img class="icones" src="images/cartIcon.png" alt="tiny icon"/></a>' ;
                     echo '</div>';
                   }
                 echo '</div>';

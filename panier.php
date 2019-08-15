@@ -3,8 +3,25 @@
 require "classes/panier.class.php";
 require "classes/itemPanier.class.php";
 require "classes/affichageProduit.class.php";
-
 session_start();
+
+
+if( isset($_GET['action']) && isset($_SESSION['panier']) ){
+
+  $action =  htmlspecialchars( $_GET['action'] );
+
+  //cas : enleverItem
+  if( isset($_GET['item']) && strcmp( $action, "enleverItem") == 0 ){
+
+    $id = htmlspecialchars( $_GET['item'] );
+    $_SESSION['panier']->enleverBackup( $id );
+  }
+  //cas : enleverItem
+  if( strcmp( $action, "viderPanier") == 0 ){
+
+    unset( $_SESSION['panier'] );
+  }
+}
 ?>
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->

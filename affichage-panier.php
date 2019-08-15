@@ -32,7 +32,7 @@
     //affichage
 ?>
 <div id="divTablePanier">
-
+        <a href="panier.php?action=viderPanier" id="viderPanier">Vider le panier</a>
         <form action="panier.php" method="POST">
         <table id="tablePanier">
             <tr class="gras">
@@ -54,7 +54,7 @@
         $sousTotal = $sousTotal + $totalDuProduit;
 
         echo '<tr>
-                <td><a href="produit.php?id=' . $id . '"><img src="images/vente/' . $image . '-mini.jpg" alt="' . $nom . '" />' . $nom .  '</a></td>
+                <td> <a href="panier.php?action=enleverItem&item=' . $id . '"><img src="images/enlever-panier.png" alt="icon d\'un x rouge"></a> <a href="produit.php?id=' . $id . '"><img src="images/vente/' . $image . '-mini.jpg" alt="' . $nom . '" />' . $nom .  '</a></td>
                 <td>' . $prix . '$</td>
                 <td><input type="text" class="txtQuantitePanier" id="' . $id . '" name="'. $id . '" value="' . $nombreDemande . '"/></td>
                 <td>'.  $totalDuProduit . '$</td>
