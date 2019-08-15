@@ -34,7 +34,8 @@
     //affichage
 ?>
 <div id="divTablePanier">
-    <form action="panier.php" method="POST">
+
+        <form action="panier.php" method="POST">;
         <table id="tablePanier">
             <tr class="gras">
                 <td>Produit</td>
@@ -69,13 +70,25 @@
 </div>
 <div id="divTotalPanier">
     <h4>Total du panier</h4>
+    
+    <?php 
+        if (!isset($_SESSION['user']))
+        {
+            echo '<form action="se-connecter.php" method="POST">';
+        }
+        else
+        {
+            echo '<form action="facture.php" method="POST">';
+        }
+    ?>
+    
     <form action="#">
         <table id="tableTotalPanier">
             <tr> <td>Sous-total</td><td class="colonneSoustotalPanier"><?php echo $sousTotal; ?> $</td> </tr>
             <tr> <td>Expédition</td><td class="colonneSoustotalPanier">10$</td> </tr>
             <tr> <td>Total</td><td class="colonneSoustotalPanier"><?php echo $grandTotal ; ?> $</td> </tr>
         </table>
-        <input type="submit" class="btnSubmitPagePanier" value="Procéder au paiement">
+            <input type="submit" class="btnSubmitPagePanier" value="Procéder au paiement">
     </form>
 </div>
 <?php
