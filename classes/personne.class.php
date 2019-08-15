@@ -35,7 +35,7 @@ class Personne {
     {
 
 		// on choisit de laisser le id vide car on ne l'utilisera pas toujours et il sera généré par la BD
-        $this->setUser($login);
+        $this->setLogin($login);
         $this->setNom($nom);		
         $this->setPrenom($prenom);
 		$this->setProvince($province);
@@ -129,7 +129,7 @@ class Personne {
     // Retourne :
     //   Rien.    
     // ***************************************************************************
-    public function setUser($login) {
+    public function setLogin($login) {
         if (empty($login)) {
             throw new Exception('Le nom usager est vide!',E_USER_ERROR);
         }
@@ -284,7 +284,7 @@ class Personne {
     // Retourne :
     //   le code codePostal de l'usager.    
     // ***************************************************************************
-    public function getCodePostal() {
+    public function getPostal() {
         return $this->_codePostal;
     }
 	
@@ -337,7 +337,7 @@ class Personne {
     //   Rien.    
     // ***************************************************************************
    
-   public function setmotPasse($motPasse) {
+   public function setMotPasse($motPasse) {
         if (empty($motPasse)) {
             throw new Exception('le mot de passe de lusager est vide!',E_USER_ERROR);
         }

@@ -1,8 +1,5 @@
 <?php
-
-    require "classes/personne.class.php";
     require 'classes/personneDao.class.php';
-
 
     //Textbox text
 	$txtUser = "";
@@ -35,10 +32,10 @@ if (isset($_POST['txtUtilisateur']))
     $login = $txtUser = htmlspecialchars($_POST['txtUtilisateur']);
     $prenom = $txtPrenom = htmlspecialchars($_POST['txtPrenom']);
     $nom = $txtNom =  htmlspecialchars($_POST['txtNom']);
-    $province =  htmlspecialchars($_POST['selProvince']);
+    $province = $selProvince = htmlspecialchars($_POST['selProvince']);
     $ville = $txtVille =  htmlspecialchars($_POST['txtVille']);
     $adresse = $txtAdresse =  htmlspecialchars($_POST['txtAdresse']);
-    $codePostal = $txtCodePostal =  htmlspecialchars($_POST['txtPostal']);
+    $codePostal = $txtPostal =  htmlspecialchars($_POST['txtPostal']);
     $email = $txtCourriel =  htmlspecialchars($_POST['txtCourriel']);
     $motPasse = $txtPass1 =  htmlspecialchars($_POST['txtMotDePasse']);
     $pass2 = $txtPass2 =  htmlspecialchars($_POST['txtMotDePasseRep']);
@@ -108,9 +105,7 @@ if (isset($_POST['txtUtilisateur']))
     }
 	
 	if ($erreur == false)
-	{
-		$_SESSION['connected'] = $login; 
-		
+	{	
 		include ('connexion.php');
 
 		try {
@@ -118,17 +113,25 @@ if (isset($_POST['txtUtilisateur']))
 			
 			//Code pour ajouter
 			$client = new Personne($login,$prenom,$nom,$province,$ville,$adresse,$codePostal,$email,$motPasse);
+            $listePersonnes = $manager->getListePersonnes();
+            $existeDeja = false;
             
-			$listePersonnes = $manager->getListePersonnes();
-
-			foreach($listePersonnes as $personne)
+            foreach($listePersonnes as $personne)
 			{
-				//if ()
-				
-				//echo '<li>'.$personne->getNom().'</li>';
+                if ($personne->getLogin() == $client->getLogin() && !$existeDeja)
+                {
+                    $existeDeja = true;
+                    $errUser = "Ce login existe déja.";
+                }
 			}
-			
-			$manager->add($client);
+            if (!$existeDeja) 
+            {
+                $manager->add($client);
+                $_SESSION['user'] = $login; 
+                header('Location: compte.php');
+                exit();
+            }
+
 			//echo 'on enregistre :<br>';
 			//echo $client->getNom()."<br>";
 			//echo $client->getPrenom()."<br><br><br>";
@@ -139,7 +142,7 @@ if (isset($_POST['txtUtilisateur']))
 			//echo $personne->getNom()."<br>";
 			//echo $personne->getPrenom()."<br>";
 			
-			$listePersonnes = $manager->getListePersonnes();
+			//$listePersonnes = $manager->getListePersonnes();
 			//echo '<ul>';
 			//foreach($listePersonnes as $personne)
 			//{

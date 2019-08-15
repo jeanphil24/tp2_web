@@ -31,10 +31,9 @@ class PersonneDao
     $q->bindValue(":province", $perso->getProvince());
 	$q->bindValue(":ville", $perso->getVille());
     $q->bindValue(":adresse", $perso->getAdresse());
-	$q->bindValue(":codePostal", $perso->getCodePostal());
+	$q->bindValue(":codePostal", $perso->getPostal());
     $q->bindValue(":email", $perso->getEmail());
 	$q->bindValue(":motPasse", $perso->getMotPasse());
-	
     $q->execute();
 	$q->closeCursor();
   }
@@ -82,21 +81,22 @@ class PersonneDao
   {
     $clients = array();
  
-    $req = $this->_db->query('SELECT nom, prenom, adresse, ville, province, codePostal, login, motPasse, email FROM clients');
+    $req = $this->_db->query('SELECT  no, nom, prenom, adresse, ville, province, codePostal, login, motPasse, email FROM clients');
  
-    while ($donnees = $req->fetch())
+    while ($ligne = $req->fetch())
     {
-		$clients[] = new Personne(	$ligne['login'], 
-										$ligne['prenom'],
-										$ligne['nom'], 
-										$ligne['province'],
-										$ligne['ville'], 
-										$ligne['adresse'],
-										$ligne['codePostal'], 
-										$ligne['email'],
-										$ligne['motPasse']);
+		$newClient = new Personne(	$ligne['login'], 
+									$ligne['prenom'],
+									$ligne['nom'], 
+									$ligne['province'],
+									$ligne['ville'], 
+									$ligne['adresse'],
+									$ligne['codePostal'], 
+									$ligne['email'],
+									$ligne['motPasse']);
+		$newClient -> setNo($ligne['no']);
+		$clients[] = $newClient;
 		//array_push($personnes, new Personne($donnees['nom'], $donnees['prenom']));
-		
     }
 	
 	$req->closeCursor();
@@ -107,16 +107,16 @@ class PersonneDao
  
   public function update(Personne $perso)
   {
-    $q = $this->_db->prepare('UPDATE clients SET 	login = :login, 
-															prenom = :prenom,
-															nom = :nom, 
-															province = :province,
-															ville = :ville,
-															adresse = :adresse, 
-															codePostal = :codePostal,
-															email = :email, 
-															motPasse = :motPasse,
-															WHERE no = :no');
+	$q = $this->_db->prepare('UPDATE clients SET 	login = :login, 
+													prenom = :prenom,
+													nom = :nom, 
+													province = :province,
+													ville = :ville,
+													adresse = :adresse, 
+													codePostal = :codePostal,
+													email = :email, 
+													motPasse = :motPasse,
+													WHERE no = :no');
  
     $q->bindValue(':login', $perso->login());
     $q->bindValue(':prenom', $perso->prenom());

@@ -4,7 +4,17 @@
                         echo $_SESSION['panier']->compterProduits(); }
                         else{ echo "0";} ?> ) </a>
         <img src="images/panier.png" alt="panier d'achat">
-        <a href="se-connecter.php" id="lienPanier">Login </a>
+        
+                <?php 
+                        if(isset($_SESSION['user']))
+                        {
+                                echo '<a href="logout.php" id="lienPanier">Logout</a>';
+                        }
+                        else
+                        {
+                                echo '<a href="se-connecter.php" id="lienPanier">Login</a>';
+                        }
+                ?>
 </div>
 <ul id="menu">
         <li class="item-menu"><a href="index.php">Accueil</a></li>

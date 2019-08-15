@@ -1,14 +1,16 @@
 <?php 
+require "classes/personneDao.class.php";
 require "classes/panier.class.php";
 require "classes/itemPanier.class.php";
 session_start();
 
-		if(!isset($_SESSION['user'])) 
-		{
-			header('Location:se-connecter.php');
-			exit;
-		}
-	 ?>
+if(!isset($_SESSION['user'])) 
+{
+  header('Location:se-connecter.php');
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <!--Date de création : 31/05/2019 Créateurs : Simon Paris, Jean-Philippe Proteau-Coulombe-->
 <html lang="fr">
@@ -44,13 +46,11 @@ session_start();
 		else
 		{
 			echo "Bonjour " . $_SESSION['user'];
-		}
+      include ('connexion.php');
+    }
+    $db = null;
 	 ?>
-	 
-	 
-	 
-	 
-	 
+
     </main>
     <footer>
       <?php

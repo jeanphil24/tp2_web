@@ -1,4 +1,4 @@
-<a href="index.html"><img id="logo" src="images/logo.png" alt="logo du site monsieur café" /></a>
+<a href="index.php"><img id="logo" src="images/logo.png" alt="logo du site monsieur café" /></a>
 
 <div id= "searchbar">
     <form id="recherche" action="resultats-recherche.php" method="GET">
