@@ -33,7 +33,7 @@
 ?>
 <div id="divTablePanier">
 
-        <form action="panier.php" method="POST">;
+        <form action="panier.php" method="POST">
         <table id="tablePanier">
             <tr class="gras">
                 <td>Produit</td>
