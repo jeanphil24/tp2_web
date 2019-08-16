@@ -6,6 +6,7 @@
     {
         $manager = new PersonneDao($db);
         $client = $manager->get($_SESSION['user']);
+        $success = "";
     
         //Message d'erreurs
         $errUser = "";
@@ -95,7 +96,7 @@
                 //Code pour ajouter
                 $client = new Personne($txtLogin,$txtPrenom,$txtNom,$selProvince,$txtVille,$txtAdresse,$txtPostal,$txtCourriel,$txtMotPasse);
                 $manager->modifyNoPassword($client);
-                
+                $success = "Vos changements ont été sauvegardés.";
             } 
             catch (Exception $exc) {
                 exit( "Erreur :<br />\n" .  $exc->getMessage() );

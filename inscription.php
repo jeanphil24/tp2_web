@@ -48,6 +48,8 @@ session_start();
             echo '<h2>Bonjour ' . $_SESSION['user'] .'</h2>';
           }
         ?>
+        <span id="success"><?php echo $success ?></span>
+
       <form action="inscription.php" method="POST" id="formInscription"> 
         <?php
           if (!isset($_SESSION['user']))

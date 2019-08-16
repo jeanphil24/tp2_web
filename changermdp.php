@@ -33,9 +33,9 @@ session_start();
           ?>
         <h2>Changement de mot de passe</h2>
           
-      
-      <form action="changermdp.php" method="POST"> 
-      <span id="success"><?php echo $success ?></span>
+        <span id="success"><?php echo $success ?></span>
+        <form action="changermdp.php" method="POST"> 
+
         <div class="formulaire">
             <label class="labelInfo" for="txtMDPOriginal">Ancien mot de passe: </label>
             <input type="password" id="txtMDPOriginal" name="txtMDPOriginal"/>
