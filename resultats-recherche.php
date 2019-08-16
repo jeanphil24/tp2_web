@@ -79,11 +79,21 @@ if( isset($_GET['id']) ){
                 echo '<div id="gridVente">';
                 foreach ($listeProduitTrouve as $produit){
                     
+                  if ( $produit->getNbDisponible() > 0 ){
+
                     echo '<div>';
                     echo '<a href="produit.php?id=' . $produit->getID() . '"><img src="images/vente/' . $produit->getNomImage() . '-t.jpg" alt="' . $produit->getNom() . '" />';
                     echo '<span class="text-boutique">' . $produit->getNom() . ' ' . $produit->getPrix() . '$' . '</span></a>';
-                    echo '<a href="resultats-recherche.php?txtRecherche=' . $_GET['txtRecherche'] .'&id=' . $produit->getID() . '"><img class="icones" src="images/cartIcon.png" alt="tiny icon"/></a>' ;
+                    echo '<a href="vente.php?id=' . $produit->getID() . '"><img class="icones" src="images/cartIcon.png" alt="tiny icon"/></a>' ;
                     echo '</div>';
+                  }else{
+                    
+                    echo '<div>';
+                    echo '<a href="produit.php?id=' . $produit->getID() . '"><img src="images/vente/' . $produit->getNomImage() . '-t.jpg" alt="' . $produit->getNom() . '" />';
+                    echo '<span class="text-boutiqueNonDispo">' . $produit->getNom() . ' ' . $produit->getPrix() . '$' . '</span></a>';
+                    echo '<p class="boutiqueBackorder">Temporairement non disponible</p>' ;
+                    echo '</div>';
+                }
                   }
                 echo '</div>';
             }

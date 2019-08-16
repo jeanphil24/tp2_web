@@ -58,7 +58,7 @@ if( isset($_GET['id']) ){
             if ( $achatSucces ){
               echo '<p class="vertSucces">'. $produit->getNom() . ' a été ajouté à votre panier !</p>';
             }else {
-              echo '<p class="redBackorder">Désolé, la quantité totale demandée dépassait l\'inventaire</p>';
+              echo '<p class="redErreur">Désolé, la quantité totale demandée dépassait l\'inventaire</p>';
             }
           } 
         ?>

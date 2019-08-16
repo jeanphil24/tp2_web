@@ -421,12 +421,15 @@ button:hover {
   .txtQuantitePanier{
       width: 55px;
   }
+  .redErreur, .redBackorder{
+    color: red;
+    font-weight: bold;
+  }
   .redBackorder{
-      color: red;
-      font-weight: bold;
+      padding-left: 10px;
   }
   .boutiqueBackorder{
-    color: red;
+    color: rgba(160, 110, 77);
     font-weight: bold;
     text-align: center;
     margin-top: 0px;
@@ -443,4 +446,9 @@ button:hover {
     padding: 10px 0px;
     margin-bottom: 10px;
     text-decoration: none;
+  }
+  #divTotalPanier h4{
+      font-weight: normal;
+      font-size: 16pt;
+      margin-bottom: 10px;
   }
