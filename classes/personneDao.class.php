@@ -74,14 +74,6 @@ class PersonneDao
 
 
 
-
-
-
-
-
-
-
- 
   public function delete(Personne $perso)
   {
 	$q = $this->_db->prepare('DELETE FROM clients WHERE no = :no');
@@ -91,15 +83,14 @@ class PersonneDao
  
   public function get($login)
   {
-	$q = $this->_db->prepare('SELECT nom, prenom, adresse, ville, province, codePostal, login, motPasse, email FROM clients WHERE login = :login');
-    $q->execute(array("login" => $login));
-    
-	
+	$reponse = $this ->_db->prepare( "CALL chercher_client_par_login(:login)" );
+	$reponse->execute( array('login' => $login));
+
 	//recuperation en tableau associatif, la cle est le nom de la colonne de la BD, la valeur est son contenu
-	$ligne = $q->fetch(PDO::FETCH_ASSOC);
+	$ligne = $reponse->fetch();
 	$unClient = new Personne(	$ligne['login'], 
-								$ligne['prenom'],
-								$ligne['nom'], 
+								$ligne['nom'],
+								$ligne['prenom'], 
 								$ligne['province'],
 								$ligne['ville'], 
 								$ligne['adresse'],
@@ -107,11 +98,8 @@ class PersonneDao
 								$ligne['email'],
 								$ligne['motPasse']);
 	
-	$q->closeCursor();
-	
-	return $unClient;
-		
-		
+	$reponse->closeCursor();
+	return $unClient;	
 	//recuperation en objet, les proprietes de l'objet sont les noms des colonnes, on peut ainsi acceder leur contenu avec le ->
 	/*
 	$donnees = $q->fetch(PDO::FETCH_OBJ);
@@ -143,9 +131,7 @@ class PersonneDao
 		$clients[] = $newClient;
 		//array_push($personnes, new Personne($donnees['nom'], $donnees['prenom']));
     }
-	
 	$req->closeCursor();
- 
     return $clients;
   }
  

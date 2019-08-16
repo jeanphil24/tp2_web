@@ -78,12 +78,12 @@
     <?php 
         if (!isset($_SESSION['user']))
         {
-            $_SESSION['lastPage'] = 'facture.php';
+            $_SESSION['lastPage'] = 'paiement.php';
             echo '<form action="login.php" method="POST">';
         }
         else
         {
-            echo '<form action="paiment.php" method="POST">';
+            echo '<form action="paiement.php" method="POST">';
         }
     ?>
         <table id="tableTotalPanier">

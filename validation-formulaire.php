@@ -12,6 +12,7 @@
     $txtCourriel = "";
     $txtPass1 = "";
     $txtPass2 = "";
+    $success = "";
 	
 	//Message d'erreurs
 	$errUser = "";

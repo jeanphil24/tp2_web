@@ -35,48 +35,45 @@ session_start();
       $username="";
     
       if (isset($_POST['username']))
-      {
-        $username = htmlspecialchars($_POST['username']);
-        $password = SHA1(htmlspecialchars($_POST['passw']));
+       {
+         $username = htmlspecialchars($_POST['username']);
+         $password = SHA1(htmlspecialchars($_POST['passw']));
 
-        include('connexion.php');
-        
-        try 
-        {
-          $manager = new PersonneDao($db);
-          $listePersonnes = $manager->getListePersonnes();
-          $usernameExists = false;
-          foreach($listePersonnes as $personne)
+         include('connexion.php');
+         try 
+         {
+           $manager = new PersonneDao($db);
+           $personne = $manager->get($username);
+
+          if ($personne != null) // if username is found
           {
-            if ($personne->getLogin() == $username)
+            if ($personne->getMotPasse() == $password) // if password is correct send to last visited page
             {
-              $usernameExists=true;
-              if ($personne->getMotPasse() == $password)
-              {
-                $_SESSION['user'] = $username;
-                header('Location:'. $_SESSION['lastPage']);
-                exit;
-              }
-              else
-              {
-                $errPassw = "Le mot de passe n'est pas correcte.";
-              }
+              $_SESSION['user'] = $username;
+              header('Location:'. $_SESSION['lastPage']);
+              exit;
+            }
+            else // if password is NOT correct display message
+            {
+              $errPassw = "Le mot de passe n'est pas correcte.";
             }
           }
-          if (!$usernameExists)
-          {
-            $errUsername = "Le nom d'utilisateur n'existe pas.";
-          }  
+
         }
         catch(Exception $e) 
         {
-          die('Erreur : '.$e->getMessage());
+          if ($username ==""){
+            $errUsername = "Vous devez rentrer un nom d'utilisateur.";
+          }
+          else {
+            $errUsername = "Le nom d'utilisateur n'existe pas.";
+          }
+
         }
       $db = null;
-      }
+       }
       ?>
       
-
     <h2>Login</h2>
     <form action="login.php"method="POST" id="formlogin">
 
