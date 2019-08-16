@@ -83,7 +83,7 @@
         }
         else
         {
-            echo '<form action="facture.php" method="POST">';
+            echo '<form action="paiment.php" method="POST">';
         }
     ?>
         <table id="tableTotalPanier">

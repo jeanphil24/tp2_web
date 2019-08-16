@@ -84,7 +84,7 @@ nav a{
 }
 main > h2{
     display: block;
-    width: 960px;
+    width: 100%;
     margin-top: 40px;
     margin-bottom: 30px;
     padding-bottom: 10px;
@@ -411,6 +411,7 @@ button:hover {
     margin-right: 20px;
     margin-bottom: 40px;
   }
+
   .colonneSoustotalPanier{
     width: 135px;
   }
