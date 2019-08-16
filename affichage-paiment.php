@@ -67,20 +67,25 @@
 
 <div id=gridFacture>
     <div id="gridItemLeft">
+        
+
+        
+
+        
         <?php
             $manager = new PersonneDao($db);
             $client = $manager->get($_SESSION['user']);
-            echo '<h4> Adresse de livraison </h4>';
-            echo '<p>'. $client->getPrenom() . ' '. $client->getNom() . '</p>';
-            echo '<p>'. $client->getAdresse() . '</p>';
-            echo '<p>'. $client->getVille() . ', '. $client->getProvince() . '</p>';
-
-
-        ?>
+            ?>
+            <h4>Adresse de livraison</h4>
+            <table id="tableAdresse">
+            <tr> <td><?php echo $client->getPrenom().' ' .$client->getNom() ?></td> </tr>
+            <tr> <td><?php echo $client->getAdresse() ?></td> </tr>
+            <tr> <td><?php echo $client->getVille().', ' .$client->getProvince() ?></td> </tr>
+            </table>
     </div>
     <div id="gridItemRight">
         <h4>Total du panier</h4>
-        <table id="tableTotalPanier">
+        <table align="right" id="tableTotalPanier">
             <tr> <td>Sous-total</td><td class="colonneSoustotalPanier"><?php echo $sousTotal; ?> $</td> </tr>
             <tr> <td>Expédition</td><td class="colonneSoustotalPanier">10$</td> </tr>
             <tr> <td>Total</td><td class="colonneSoustotalPanier"><?php echo $grandTotal ; ?> $</td> </tr>
