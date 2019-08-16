@@ -50,7 +50,8 @@ if(!isset($_SESSION['user']))
 	 ?>
    <ul id="OptionsCompte">
         <li class="option-compte"><a href="panier.php">Votre Panier</a></li>
-        <li class="option-compte"><a href="infoclient.php">Vos informations personnelles</a></li>
+        <li class="option-compte"><a href="inscription.php">Vos informations personnelles</a></li>
+        <li class="option-compte"><a href="changerMDP.php">Changer mon mot de passe</a></li>
         <li class="option-compte"><a href="anciennes-factures.php">Voir vos anciennes factures</a></li>
 
   </ul>

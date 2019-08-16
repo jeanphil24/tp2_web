@@ -28,66 +28,67 @@
         $txtVille = $client -> getVille();
         $txtAdresse = $client -> getAdresse();
         $txtPostal = $client -> getPostal();
-        $txtCourriel = $client -> getCourriel();
-        $txtPass1 = $client -> getMotPasse();
-        $txtPass2 = $client -> getMotPasse();
+        $txtCourriel = $client -> getEmail();
+        $txtMotPasse = $txtPass2 = $client -> getMotPasse();
+        $txtMotPasseCache = str_repeat("*", strlen($txtMotPasse)); 
+        $txtLogin = $client -> getLogin();
     }
     catch (Exception $exc) {
         exit( "Erreur :<br />\n" .  $exc->getMessage() );
     }      
 
-	if ($prenom == "")
+	if ($txtPrenom == "")
     {
       $erreur = true;
 	  $errPrenom = "Vous devez entrez un prénom.";
     }
 	
-	if ($nom == "")
+	if ($txtNom == "")
     {
       $erreur = true;
 	  $errNom = "Vous devez entrez un nom.";
     }
 	
-	if ($ville == "")
+	if ($txtVille == "")
     {
       $erreur = true;
 	  $errVille = "Vous devez entrez une Ville.";
     }
 	
-	if ($adresse == "")
+	if ($txtAdresse == "")
     {
       $erreur = true;
 	  $errAdresse = "Vous devez entrez une addresse.";
     }
 	
-	if (!preg_match('/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/', $codePostal)) // Regex simple de regexlib.com
+	if (!preg_match('/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/', $txtPostal)) // Regex simple de regexlib.com
 	{
       $erreur = true;
 	  $errPostal = "Vous devez entrer un code postal du format A1A 1A1";
     }
 	
-	if (!filter_var($email, FILTER_VALIDATE_EMAIL))  // validation email php de W3School
+	if (!filter_var($txtCourriel, FILTER_VALIDATE_EMAIL))  // validation email php de W3School
 	{
       $erreur = true;
-	  $errCourriel = "Vous devez entrez une couriel valide.";
+	  $errEmail = "Vous devez entrez une couriel valide.";
 	}
 
-	if ($motPasse == "")
+	if ($txtMotPasse == "")
     {
       $erreur = true;
 	  $errPass1 = "Vous devez entrer un mot de passe.";
     }
-	else if (strlen($motPasse) <6 )
+	else if (strlen($txtMotPasse) <6 )
     {
       $erreur = true;
 	  $errPass1 = "Votre mot de passe doit être au moins 6 charactères";
     }
-	else if ($pass2 == "")
+	else if ($txtPass2 == "")
     {
       $erreur = true;
 	  $errPass2 = "Vous devez entrer a nouveau votre mot de passe.";
     }	
-	else if ($motPasse != $pass2)
+	else if ($txtMotPasse != $txtPass2)
     {
       $erreur = true;
 	  $errPass2 = "Les deux mots de passes doivent être pareil.";
@@ -101,7 +102,7 @@
 			$manager = new PersonneDao($db);
 			
 			//Code pour ajouter
-			$client = new Personne($login,$prenom,$nom,$province,$ville,$adresse,$codePostal,$email,$motPasse);
+			$client = new Personne($txtLogin,$txtPrenom,$txtNom,$selProvince,$txtVille,$txtAdresse,$txtPostal,$txtCourriel,$txtMotPasse);
             $listePersonnes = $manager->getListePersonnes();
             $existeDeja = false;
             
@@ -145,5 +146,4 @@
        
 		$db = null;	
 	}
-  } 
-  ?>
+    ?>

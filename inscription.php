@@ -17,8 +17,15 @@ session_start();
     <!-- script src="js/inscription.js"></script> -->
   </head>
   <body>
-		<?php
-		include('form-validation.php');
+    <?php
+      if (isset($_SESSION['user']))
+      {
+        include('clientinfo-validation.php');
+      }
+      else 
+      {
+        include('form-validation.php');
+      }
 		?>
   <header>
       <?php
@@ -31,25 +38,40 @@ session_start();
       ?>
     </nav>
     <main>
-      <h2>Inscription</h2>
-      <form action="inscription.php" method="POST" id="formInscription">
-        
+        <?php
+          if (!isset($_SESSION['user']))
+          {
+            echo '<h2>Inscription</h2>';
+          }
+          else
+          {
+            echo '<h2>Bonjour ' . $_SESSION['user'] .'</h2>';
+          }
+        ?>
+      <form action="inscription.php" method="POST" id="formInscription"> 
+        <?php
+          if (!isset($_SESSION['user']))
+          {
+            ?>
+              <div class="formulaire">
+                <label class="labelInfo" for="txtUtilisateur">Nom d'utilisateur :</label>
+                <input type="text" id="txtUtilisateur" name="txtUtilisateur" value="<?php echo $txtUser ?>"/>
+                <span id="errUtilisateur"> <?php echo $errUser ?> </span>
+              </div>
+        <?php
+          }
+        ?>
+
         <div class="formulaire">
-			<label class="labelInfo" for="txtUtilisateur">Nom d'utilisateur :</label>
-			<input type="text" id="txtUtilisateur" name="txtUtilisateur" value="<?php echo $txtUser ?>"/>
-			<span id="errUtilisateur"> <?php echo $errUser ?> </span>
+          <label class="labelInfo" for="txtPrenom">Prénom :</label>
+          <input type="text" id="txtPrenom" name="txtPrenom" value="<?php echo $txtPrenom ?>"/>
+          <span id="errPrenom"><?php echo $errPrenom ?></span>
         </div>
         
         <div class="formulaire">
-			<label class="labelInfo" for="txtPrenom">Prénom :</label>
-			<input type="text" id="txtPrenom" name="txtPrenom" value="<?php echo $txtPrenom ?>"/>
-			<span id="errPrenom"><?php echo $errPrenom ?></span>
-        </div>
-        
-        <div class="formulaire">
-            <label class="labelInfo" for="txtNom">Nom :</label>
-            <input type="text" id="txtNom" name="txtNom" value="<?php echo $txtNom ?>"/>
-            <span id="errNom"><?php echo $errNom ?></span>
+          <label class="labelInfo" for="txtNom">Nom :</label>
+          <input type="text" id="txtNom" name="txtNom" value="<?php echo $txtNom ?>"/>
+          <span id="errNom"><?php echo $errNom ?></span>
         </div>
 
 		
@@ -96,20 +118,35 @@ session_start();
           <input type="text" id="txtCourriel" name="txtCourriel" value="<?php echo $txtCourriel ?>" placeholder="adresse@exemple.com"/>
           <span id="errCourriel"><?php echo $errCourriel ?></span>
         </div>
+        <?php
         
-        <div class="formulaire">
-          <label class="labelInfo" for="txtMotDePasse">Mot de passe :</label>
-          <input type="password" id="txtMotDePasse" name="txtMotDePasse" value="<?php echo $txtPass1 ?>" placeholder="Minimun 6 charactères"/>
-          <span id="errMotDePasse"><?php echo $errPass1 ?></span>
-        </div>
+        if (!isset($_SESSION['user']))
+        {
+          ?>
+            <div class="formulaire">
+              <label class="labelInfo" for="txtMotDePasse">Mot de passe :</label>
+              <input type="password" id="txtMotDePasse" name="txtMotDePasse" value="<?php echo $txtPass1 ?>" placeholder="Minimun 6 charactères"/>
+              <span id="errMotDePasse"><?php echo $errPass1 ?></span>
+            </div>
 
-        <div class="formulaire">
-          <label class="labelInfo" for="txtMotDePasseRep">Répéter le mot de passe :</label>
-          <input type="password" id="txtMotDePasseRep" name="txtMotDePasseRep" value="<?php echo $txtPass2 ?>"/>
-          <span id="errMotDePasseRep"><?php echo $errPass2 ?></span>
-        </div>
-
-        <input id="envoyerFormulaire" type="submit" value="Envoyer le formulaire"/>
+            <div class="formulaire">
+              <label class="labelInfo" for="txtMotDePasseRep">Répéter le mot de passe :</label>
+              <input type="password" id="txtMotDePasseRep" name="txtMotDePasseRep" value="<?php echo $txtPass2 ?>"/>
+              <span id="errMotDePasseRep"><?php echo $errPass2 ?></span>
+            </div>
+          <?php
+        }
+        ?>
+        <?php
+          if (!isset($_SESSION['user']))
+          {
+            echo '<input id="envoyerFormulaire" type="submit" value="Envoyer le formulaire"/>';
+          }
+          else
+          {
+            echo '<input id="envoyerFormulaire" type="submit" value="Mis à jour"/>';
+          }
+        ?>
       </form>
     </main>
     <footer>

@@ -42,7 +42,7 @@ class Personne {
         $this->setVille($ville);
 		$this->setAdresse($adresse);
         $this->setPostal($codePostal);
-		$this->setemail($email);
+		$this->setEmail($email);
         $this->setmotPasse($motPasse);
     }
     
@@ -303,7 +303,7 @@ class Personne {
     //   Rien.    
     // ***************************************************************************
    
-   public function setemail($email) {
+   public function setEmail($email) {
         if (empty($email)) {
             throw new Exception('le email de lusager est vide!',E_USER_ERROR);
         }

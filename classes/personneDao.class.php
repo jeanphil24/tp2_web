@@ -75,6 +75,9 @@ class PersonneDao
 	*/
   }
  
+
+
+
   public function getListePersonnes()
   {
     $clients = array();
