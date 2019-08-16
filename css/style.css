@@ -447,8 +447,14 @@ button:hover {
     margin-bottom: 10px;
     text-decoration: none;
   }
-  #divTotalPanier h4{
+  #divTotalPanier h4, #gridItemsLeft > h4{
       font-weight: normal;
       font-size: 16pt;
       margin-bottom: 10px;
+  }
+  .redErreurPanier{
+    color: red;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }

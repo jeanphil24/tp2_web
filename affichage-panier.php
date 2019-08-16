@@ -30,10 +30,16 @@
     }
     
     //affichage
+    if( isset($listeErreurs)){
+        foreach($listeErreurs as $erreur){
+            echo '<p class="redErreurPanier">' . $erreur . ' : dépassait la quantité en inventaire</p>';
+        }
+    }
+    
 ?>
 <div id="divTablePanier">
         <a href="panier.php?action=viderPanier" id="viderPanier">Vider le panier</a>
-        <form action="panier.php" method="POST">
+        <form action="panier.php?action=update" method="POST">
         <table id="tablePanier">
             <tr class="gras">
                 <td>Produit</td>

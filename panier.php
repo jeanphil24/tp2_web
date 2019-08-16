@@ -14,12 +14,18 @@ if( isset($_GET['action']) && isset($_SESSION['panier']) ){
   if( isset($_GET['item']) && strcmp( $action, "enleverItem") == 0 ){
 
     $id = htmlspecialchars( $_GET['item'] );
-    $_SESSION['panier']->enleverBackup( $id );
+    $_SESSION['panier']->enlever( $id );
   }
-  //cas : enleverItem
+  //cas : viderPanier
   if( strcmp( $action, "viderPanier") == 0 ){
 
     unset( $_SESSION['panier'] );
+  }
+  //cas : mise a jour
+  if( strcmp( $action, "update") == 0 ){
+
+    $listeErreurs = $_SESSION['panier']->miseAJourPanier( $_POST );
+
   }
 }
 ?>
