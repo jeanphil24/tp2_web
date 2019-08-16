@@ -20,11 +20,11 @@ session_start();
     <?php
       if (isset($_SESSION['user']))
       {
-        include('clientinfo-validation.php');
+        include('validation-infoclient.php');
       }
       else 
       {
-        include('form-validation.php');
+        include('validation-formulaire.php');
       }
 		?>
   <header>
@@ -140,11 +140,11 @@ session_start();
         <?php
           if (!isset($_SESSION['user']))
           {
-            echo '<input id="envoyerFormulaire" type="submit" value="Envoyer le formulaire"/>';
+            echo '<button id="envoyerFormulaire" type="submit" value="">Envoyer le formulaire </button>';
           }
           else
           {
-            echo '<input id="envoyerFormulaire" type="submit" value="Mis à jour"/>';
+            echo '<button id="envoyerFormulaire" type="submit" value="">Mis à jour</button>';
           }
         ?>
       </form>

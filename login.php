@@ -37,7 +37,7 @@ session_start();
       if (isset($_POST['username']))
       {
         $username = htmlspecialchars($_POST['username']);
-        $password = htmlspecialchars($_POST['passw']);
+        $password = SHA1(htmlspecialchars($_POST['passw']));
 
         include('connexion.php');
         

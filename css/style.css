@@ -320,7 +320,7 @@ margin: auto auto;
     box-sizing: border-box;
   }
 
-#login {
+#login{
     background-color:rgb(143, 75, 29);
     color: white;
     padding: 14px 20px;
@@ -328,6 +328,16 @@ margin: auto auto;
     border: none ;
     cursor: pointer;
     width: 100%;
+  }
+
+    #envoyerFormulaire {
+    background-color:rgb(143, 75, 29);
+    color: white;
+    padding: 7px 7px;
+    margin: 8px 170px;
+    border: none ;
+    cursor: pointer;
+    width: 17%;
   }
 
 button:hover {

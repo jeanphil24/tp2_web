@@ -1,94 +1,103 @@
 <?php
     require 'classes/personneDao.class.php';
-    include('connexion.php');
-        
-    try 
-    {
-        $manager = new PersonneDao($db);
-        $client = $manager->get($_SESSION['user']);
-    
-        //Message d'erreurs
-        $errUser = "";
-        $errPrenom ="";
-        $errNom = "";
-        $errProvince = "";
-        $errVille = "";
-        $errAdresse = "";
-        $errPostal = "";
-        $errCourriel = "";
-        $errPass1 = "";
-        $errPass2 = "";
-        $erreur = false;
-    
-        // variables du formulaire
-        $txtUser = $client -> getLogin();
-        $txtPrenom = $client -> getPrenom();
-        $txtNom = $client -> getNom();
-        $selProvince = $client -> getProvince();
-        $txtVille = $client -> getVille();
-        $txtAdresse = $client -> getAdresse();
-        $txtPostal = $client -> getPostal();
-        $txtCourriel = $client -> getEmail();
-        $txtMotPasse = $txtPass2 = $client -> getMotPasse();
-        $txtMotPasseCache = str_repeat("*", strlen($txtMotPasse)); 
-        $txtLogin = $client -> getLogin();
-    }
-    catch (Exception $exc) {
-        exit( "Erreur :<br />\n" .  $exc->getMessage() );
-    }      
 
-	if ($txtPrenom == "")
+    //Textbox text
+	$txtUser = "";
+    $txtPrenom ="";
+    $txtNom = "";
+    $selProvince = "";
+    $txtVille = "";
+    $txtAdresse = "";
+    $txtPostal = "";
+    $txtCourriel = "";
+    $txtPass1 = "";
+    $txtPass2 = "";
+	
+	//Message d'erreurs
+	$errUser = "";
+    $errPrenom ="";
+    $errNom = "";
+    $errProvince = "";
+    $errVille = "";
+    $errAdresse = "";
+    $errPostal = "";
+    $errCourriel = "";
+    $errPass1 = "";
+    $errPass2 = "";
+	$erreur = false;
+
+if (isset($_POST['txtUtilisateur']))
+  { 
+    // variables du formulaire
+    $login = $txtUser = htmlspecialchars($_POST['txtUtilisateur']);
+    $prenom = $txtPrenom = htmlspecialchars($_POST['txtPrenom']);
+    $nom = $txtNom =  htmlspecialchars($_POST['txtNom']);
+    $province = $selProvince = htmlspecialchars($_POST['selProvince']);
+    $ville = $txtVille =  htmlspecialchars($_POST['txtVille']);
+    $adresse = $txtAdresse =  htmlspecialchars($_POST['txtAdresse']);
+    $codePostal = $txtPostal =  htmlspecialchars($_POST['txtPostal']);
+    $email = $txtCourriel =  htmlspecialchars($_POST['txtCourriel']);
+    $motPasse = $txtPass1 =  SHA1(htmlspecialchars($_POST['txtMotDePasse']));
+    $pass2 = $txtPass2 =  SHA1(htmlspecialchars($_POST['txtMotDePasseRep']));
+
+    if ($login == "")
+    {
+      $erreur = true;
+	  $errUser = "Vous devez entrez un nom d'utilisateur.";
+    }
+	
+	if ($prenom == "")
     {
       $erreur = true;
 	  $errPrenom = "Vous devez entrez un prénom.";
     }
 	
-	if ($txtNom == "")
+	if ($nom == "")
     {
       $erreur = true;
 	  $errNom = "Vous devez entrez un nom.";
     }
 	
-	if ($txtVille == "")
+	if ($ville == "")
     {
       $erreur = true;
 	  $errVille = "Vous devez entrez une Ville.";
     }
 	
-	if ($txtAdresse == "")
+	if ($adresse == "")
     {
       $erreur = true;
 	  $errAdresse = "Vous devez entrez une addresse.";
     }
 	
-	if (!preg_match('/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/', $txtPostal)) // Regex simple de regexlib.com
+	if (!preg_match('/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/', $codePostal)) // Regex simple de regexlib.com
 	{
       $erreur = true;
 	  $errPostal = "Vous devez entrer un code postal du format A1A 1A1";
     }
 	
-	if (!filter_var($txtCourriel, FILTER_VALIDATE_EMAIL))  // validation email php de W3School
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL))  // validation email php de W3School
 	{
       $erreur = true;
-	  $errEmail = "Vous devez entrez une couriel valide.";
+	  $errCourriel = "Vous devez entrez une couriel valide.";
 	}
 
-	if ($txtMotPasse == "")
+	if ($motPasse == "")
     {
       $erreur = true;
 	  $errPass1 = "Vous devez entrer un mot de passe.";
     }
-	else if (strlen($txtMotPasse) <6 )
+	else if (strlen($motPasse) <6 )
     {
       $erreur = true;
 	  $errPass1 = "Votre mot de passe doit être au moins 6 charactères";
     }
-	else if ($txtPass2 == "")
+	else if ($pass2 == "")
     {
       $erreur = true;
 	  $errPass2 = "Vous devez entrer a nouveau votre mot de passe.";
     }	
-	else if ($txtMotPasse != $txtPass2)
+	else if ($motPasse != $pass2)
     {
       $erreur = true;
 	  $errPass2 = "Les deux mots de passes doivent être pareil.";
@@ -102,7 +111,7 @@
 			$manager = new PersonneDao($db);
 			
 			//Code pour ajouter
-			$client = new Personne($txtLogin,$txtPrenom,$txtNom,$selProvince,$txtVille,$txtAdresse,$txtPostal,$txtCourriel,$txtMotPasse);
+			$client = new Personne($login,$prenom,$nom,$province,$ville,$adresse,$codePostal,$email,$motPasse);
             $listePersonnes = $manager->getListePersonnes();
             $existeDeja = false;
             
@@ -146,4 +155,5 @@
        
 		$db = null;	
 	}
-    ?>
+  } 
+  ?>

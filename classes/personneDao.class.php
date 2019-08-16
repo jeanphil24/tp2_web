@@ -15,7 +15,7 @@ class PersonneDao
 									VALUES (:nom, :prenom, :adresse, :ville, :province, :codePostal, :login ,:motPasse, :email)');
 	
 	//ou avec bindValue, c'est équivalent
-	//$q->execute(array("login" => $perso->getLogin(),
+	//$q->execute(array(    "login" => $perso->getLogin(),
 	//						"nom" => $perso->getNom(), 
 	//						"prenom" => $perso->getPrenom(),
 	//						"province" => $perso->getProvince(), 
@@ -36,7 +36,51 @@ class PersonneDao
 	$q->bindValue(":motPasse", $perso->getMotPasse());
     $q->execute();
 	$q->closeCursor();
-  }
+ }
+
+
+
+	public function modifyNoPassword(Personne $perso)
+	{
+		$reponse = $this->_db->prepare( "CALL modifier_client_sans_motPasse(:nom, :prenom, :adresse, :ville, :province, :codePostal, :login, :email)" );
+		$reponse->execute( array(   "nom" => $perso->getNom(), 
+									"prenom" => $perso->getPrenom(),
+									"adresse" => $perso->getAdresse(), 
+									"ville" => $perso->getVille(),
+									"province" => $perso->getProvince(), 
+									"codePostal" => $perso->getPostal(),
+									"login" => $perso->getLogin(),
+									"email" => $perso->getEmail()));
+		$reponse->execute();
+		$reponse->closeCursor();
+	}
+
+	public function modifyPassword(Personne $perso)
+	{
+		$reponse = $this->_db->prepare( "CALL modifier_client(:nom, :prenom, :adresse, :ville, :province, :codePostal, :login, :motPasse, :email)" );
+		$reponse->execute( array(   "nom" => $perso->getNom(), 
+									"prenom" => $perso->getPrenom(),
+									"adresse" => $perso->getAdresse(), 
+									"ville" => $perso->getVille(),
+									"province" => $perso->getProvince(), 
+									"codePostal" => $perso->getPostal(),
+									"login" => $perso->getLogin(),
+									"motPasse" => $perso->getMotPasse(),
+									"email" => $perso->getEmail()));
+		$reponse->execute();
+		$reponse->closeCursor();
+	}
+
+
+
+
+
+
+
+
+
+
+
  
   public function delete(Personne $perso)
   {
