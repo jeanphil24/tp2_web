@@ -36,7 +36,7 @@ if(!isset($_SESSION['user']))
       ?>
     </nav>
     <main>
-     <h2> Facture et paiment </h2>
+     <h2> Facture et paiement </h2>
     <?php
         if ( isset($_SESSION['panier']) ){
           if( $_SESSION['panier']->compterProduits() == 0 ){
