@@ -1,6 +1,5 @@
 <?php 
 require "classes/panier.class.php";
-require "classes/itemPanier.class.php";
 session_start();
 ?>
 <!DOCTYPE html>

@@ -27,14 +27,14 @@ class panier
 
         if( !isset($listeLocale[$p_id]) ){
             // il n'est pas deja dans la liste donc on l'ajoute
-            $listeLocale[$p_id] = new itemPanier( $p_id, $p_quantite );
+            $listeLocale[$p_id] = $p_quantite;
         }
         else{
             // on modifie celui trouvé
-            $quantitePrecedente = $listeLocale[$p_id]->getQuantite();
+            $quantitePrecedente = $listeLocale[$p_id];
             $total = $quantitePrecedente + $p_quantite;
 
-            $listeLocale[$p_id]->setQuantite( $total );
+            $listeLocale[$p_id] = $total;
         }
 
         //mise a jour de la liste
@@ -45,16 +45,14 @@ class panier
         
         $listeLocale = $this->getListeProduits();
 
-        // si il existe
         if( isset($listeLocale[$p_id]) ){
             
-            $listeLocale[ $p_id ]->setQuantite( 0 );
             $nouvelleListe = array();
 
-            foreach( $listeLocale as $produit ){
+            foreach( $listeLocale as $key => $value ){
 
-                if( $produit->getQuantite() > 0 ){
-                    $nouvelleListe[$produit->getID()] = $produit;
+                if( $key != $p_id ){
+                    $nouvelleListe[$key] = $value;
                 }
             }
             //mise a jour de la liste
@@ -69,21 +67,23 @@ class panier
         foreach( $p_liste as $key => $value ){
 
             $disponible = $this->verifierDispo( $key, $value );
+
             if( $disponible ){
-                $listeLocale[$key]->setQuantite($value);
+
+                $listeLocale[$key] = $value;
             }else{
+
                 $listeErreurs[] = $this->nomRecherche;
             }
         }
 
         $nouvelleListe = array();
 
-        foreach( $listeLocale as $produit ){
+        foreach( $listeLocale as $key => $value ){
 
-            if( $produit->getQuantite() > 0 ){
+            if( $value > 0 ){
 
-                $id = $produit->getID();
-                $nouvelleListe[$id] = $produit;
+                $nouvelleListe[$key] = $value;
             }
         }
 
@@ -134,12 +134,11 @@ class panier
         }
         else{
 
-            $listeLocale = $this->getListeProduits();
             $total = 0;
 
             foreach($listeLocale as $produit){
 
-                $total = $total + $produit->getQuantite();
+                $total = $total + $produit;
             }
             return $total;
         }
@@ -154,8 +153,8 @@ class panier
             return 0;
         }
         else{
-            // il est deja dedans
-            return $listeLocale[$p_id]->getQuantite();
+            // il est dedans
+            return $listeLocale[$p_id];
         }
     }
     private function compterProduitsUnique() {
@@ -168,33 +167,9 @@ class panier
         }
         else{
 
-            $listeLocale = $this->getListeProduits();
-            
             return sizeof( $listeLocale );
         }
     }
-    private function trouverItemParID( $p_idRecherche ) {
-
-        $trouve = -1;
-        $listeLocale = $this->getListeProduits();
-
-        if( empty( $listeLocale ) ){
-
-            return $trouve;
-        }
-        else{
-
-            $nombreProduits = $this->compterProduitsUnique();
-            for ($i = 0; $i < $nombreProduits; $i++) {
-
-                $idCourant = $listeLocale[$i]->getID();
-                if( $idCourant == $p_idRecherche ){
-                    $trouve = $i;
-                }
-            }
-            return $trouve;
-        }
-    } 
     //fin classe
     }
     ?>

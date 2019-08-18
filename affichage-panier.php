@@ -5,18 +5,16 @@
     $listeAffichage;
     $id;
     $nombreAchat;
-    foreach ($listePanier as $itemPanier){
+    foreach ($listePanier as $key => $value){
 
-        $id = $itemPanier->getID();
-        $nombreAchat = $itemPanier->getQuantite();
         try {
 
             $reponse = $db->prepare( "CALL chercher_produit(:id)" );
-            $reponse->execute( array('id' => $id) );
+            $reponse->execute( array('id' => $key) );
     
             if( $ligne = $reponse -> fetch() ){
                 
-                $listeAffichage[] = new affichageProduit( $ligne['no'], $nombreAchat, $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'], $ligne['description']  );
+                $listeAffichage[] = new affichageProduit( $ligne['no'], $value, $ligne['nom'], $ligne['prix'], $ligne['image'], $ligne['qte'], $ligne['description']  );
 
             }
         }
@@ -29,13 +27,13 @@
         $reponse->closeCursor();
     }
     
-    //affichage
+    // affichage des erreurs si le cas
     if( isset($listeErreurs)){
         foreach($listeErreurs as $erreur){
             echo '<p class="redErreurPanier">' . $erreur . ' : dépassait la quantité en inventaire</p>';
         }
     }
-    
+    // affichage du panier
 ?>
 <div id="divTablePanier">
         <a href="panier.php?action=viderPanier" id="viderPanier">Vider le panier</a>

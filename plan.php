@@ -1,7 +1,6 @@
 <?php 
 
 require "classes/panier.class.php";
-require "classes/itemPanier.class.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -33,12 +32,14 @@ session_start();
         <li class="listePuceImage"> <a href="index.html">Accueil</a></li>
         <li class="sansPuce">
           <ul class="listePuceImage">
-            <li><a href="galerie.html">Galerie photo</a></li>
-            <li><a href="vente.html">Boutique : notre magasin en ligne</a></li>
-            <li><a href="cafe-monde.html">Histoire du café : une petite introduction à l'histoire du café</a></li>
-            <li><a href="sources.html">Références : pour les droits d'auteur</a></li>
-            <li><a href="plan.html">Plan du site : vous êtes présentement sur cette page</a></li>
-            <li><a href="inscription.html">Inscription : pour devenir membre</a></li>
+            <li><a href="galerie.php">Galerie photo</a></li>
+            <li><a href="vente.php">Boutique : notre magasin en ligne</a></li>
+            <li><a href="cafe-monde.php">Histoire du café : une petite introduction à l'histoire du café</a></li>
+            <li><a href="sources.php">Références : pour les droits d'auteur</a></li>
+            <li><a href="plan.php">Plan du site : vous êtes présentement sur cette page</a></li>
+            <li><a href="inscription.php">Inscription : pour devenir membre</a></li>
+            <li><a href="login.php">Login : pour se connecter</a></li>
+            <li><a href="panier.php">Panier : affiche les items du panier et permet de confirmer la commande</a></li>
           </ul>
         </li>
       </ul>

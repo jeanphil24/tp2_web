@@ -2,7 +2,6 @@
 require "classes/affichageProduit.class.php";
 require "classes/personneDao.class.php";
 require "classes/panier.class.php";
-require "classes/itemPanier.class.php";
 session_start();
 
 if(!isset($_SESSION['user'])) 
