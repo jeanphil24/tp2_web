@@ -125,14 +125,14 @@ session_start();
         {
           ?>
             <div class="formulaire">
-              <label class="labelInfo" for="txtMotDePasse">Mot de passe :</label>
-              <input type="password" id="txtMotDePasse" name="txtMotDePasse" value="<?php echo $txtPass1 ?>" placeholder="Minimun 6 charactères"/>
-              <span id="errMotDePasse"><?php echo $errPass1 ?></span>
+              <label class="labelInfo" for="txtMotDePasse">Mot de passe* :</label>
+              <input type="password" id="txtMotDePasse" name="txtMotDePasse" placeholder="Minimun 6 charactères"/>
+              <span id="errMotDePasse" style="color: <?php echo $errColor ?>"> <?php echo $errPass1 ?></span>
             </div>
 
             <div class="formulaire">
               <label class="labelInfo" for="txtMotDePasseRep">Répéter le mot de passe :</label>
-              <input type="password" id="txtMotDePasseRep" name="txtMotDePasseRep" value="<?php echo $txtPass2 ?>"/>
+              <input type="password" id="txtMotDePasseRep" name="txtMotDePasseRep"/>
               <span id="errMotDePasseRep"><?php echo $errPass2 ?></span>
             </div>
           <?php
