@@ -17,7 +17,7 @@
     }
     catch(Exception $e) {
 
-	    die('Erreur : '.$e->getMessage());
+	    die('Erreur : ' . $e->getMessage());
     }
 
     //fermer appel et base de données 
