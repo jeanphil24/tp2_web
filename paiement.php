@@ -50,7 +50,7 @@ if (isset($_POST['selPaiement'])){
      <?php
     if (isset($success))
     {
-      echo "<p>La commande a été effectué avec succès </p>";
+      echo '<p class="vertSucces">La commande a été effectué avec succès</p>';
     }
     else 
     {
