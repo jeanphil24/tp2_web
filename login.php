@@ -74,7 +74,7 @@ session_start();
       ?>
       
     <h2>Login</h2>
-    <form action="login.php"method="POST" id="formlogin">
+    <form action="login.php" method="POST" id="formlogin">
 
      <div class="loginform">
         <label for="username"><b>Username</b></label>

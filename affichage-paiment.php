@@ -55,7 +55,7 @@
                     echo '<tr>
                             <td> <a href="produit.php?id=' . $id . '"><img src="images/vente/' . $image . '-mini.jpg" alt="' . $nom . '" />' . $nom .  '</a></td>
                             <td>' . $prix . '$</td>
-                            <td><span class="txtQuantitePanier" id="' . $id . '" name="'. $id .  '"/>' . $nombreDemande .'</td>
+                            <td><span class="txtQuantitePanier" id="' . $id . '">' . $nombreDemande .'</span></td>
                             <td>'.  $totalDuProduit . '$</td>
                         </tr>';
                 }
@@ -81,7 +81,7 @@
     <div id="gridItemRight">
 
             <h4>Total du panier</h4>
-            <table align="right" id="tableTotalPanier">
+            <table id="tableTotalPanier">
                 <tr> <td>Sous-total</td><td class="colonneSoustotalPanier"><?php echo $sousTotal; ?> $</td> </tr>
                 <tr> <td>Expédition</td><td class="colonneSoustotalPanier">10$</td> </tr>
                 <tr> <td>Total</td><td class="colonneSoustotalPanier"><?php echo $grandTotal ; ?> $</td> </tr>

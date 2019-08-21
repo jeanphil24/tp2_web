@@ -5,9 +5,9 @@
     $produitTrouve = false;
 
     try {
-
+        $id = htmlspecialchars($_GET['id']);
         $reponse = $db->prepare( "CALL chercher_produit(:id)" );
-        $reponse->execute( array('id' => $_GET['id']) );
+        $reponse->execute( array('id' => $id) );
 
         if( $ligne = $reponse -> fetch() ){
             

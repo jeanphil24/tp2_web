@@ -103,13 +103,6 @@ session_start();
         <a href="https://www.iconfinder.com/icons/218102/add_cart_plus_shopping_shopping_cart_icon"
           >https://www.iconfinder.com</a>
       </p>
-
-
-      
-
-
-
-
       <h3>Histoire du café</h3>
       <p>
         Texte et photos :
@@ -119,7 +112,7 @@ session_start();
       </p>
       <h3>Boutique</h3>
       <p>
-        Les photos de produit et leurs descriptions :
+        Les photos des produits de la boutique et leurs descriptions :
         <a href="https://bruleriedescantons.com/"
           >https://bruleriedescantons.com/</a>
       </p>

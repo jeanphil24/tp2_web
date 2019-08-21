@@ -27,7 +27,7 @@ session_start();
           if (!isset($_SESSION['user']))
           {
             header('Location:index.php');
-			exit;
+			      exit;
           }
           ?>
         <h2>Changement de mot de passe</h2>

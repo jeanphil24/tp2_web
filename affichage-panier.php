@@ -74,7 +74,7 @@
     <h4>Total du panier</h4>
     
     <?php 
-        if (!isset($_SESSION['user']))
+        if ( !isset($_SESSION['user']) )
         {
             $_SESSION['lastPage'] = 'paiement.php';
             echo '<form action="login.php" method="POST">';

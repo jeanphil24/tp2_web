@@ -36,7 +36,7 @@ if(!isset($_SESSION['user']))
     <main>
      
 	 <?php
-		if(!isset($_SESSION['user'])) 
+		if( !isset($_SESSION['user']) ) 
 		{
 			header('Location:index.php');
 			exit;
@@ -44,17 +44,14 @@ if(!isset($_SESSION['user']))
     
 		else
 		{
-      echo '<p id="bonjourUser">Bonjour ' . $_SESSION['user'] . '</p>';
+      echo '<h2 class="bonjourUser">Bonjour ' . $_SESSION['user'] . '</h2>';
     }
 	 ?>
    <ul id="OptionsCompte">
         <li class="option-compte"><a href="panier.php">Votre Panier</a></li>
         <li class="option-compte"><a href="inscription.php">Vos informations personnelles</a></li>
         <li class="option-compte"><a href="changerMDP.php">Changer mon mot de passe</a></li>
-
   </ul>
-
-
     </main>
     <footer>
       <?php

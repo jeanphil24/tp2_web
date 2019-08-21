@@ -79,19 +79,19 @@ session_start();
 		<div class="formulaire">
 			<label class="labelInfo" for="selProvince">Province :</label>
 			<select id="selProvince" name="selProvince">
-				<option value="AB"<?php if($selProvince=="AB") echo 'selected="selected"'; ?>>Alberta</option>
-				<option value="BC"<?php if($selProvince=="BC") echo 'selected="selected"'; ?>>Colombie-Britannique</option>		
-				<option value="MB"<?php if($selProvince=="MB") echo 'selected="selected"'; ?>>Manitoba</option>
-				<option value="NB"<?php if($selProvince=="NB") echo 'selected="selected"'; ?>>Nouveau-Brunswick</option>
-				<option value="NL"<?php if($selProvince=="NL") echo 'selected="selected"'; ?>>Terre-Neuve-et-Labrador</option>
-				<option value="NS"<?php if($selProvince=="NS") echo 'selected="selected"'; ?>>Nouvelle-Écosse</option>
-				<option value="ON"<?php if($selProvince=="ON") echo 'selected="selected"'; ?>>Ontario</option>
-				<option value="PE"<?php if($selProvince=="PE") echo 'selected="selected"'; ?>>Île-du-Prince-Édouard</option>
-				<option value="QC"<?php if($selProvince=="QC") echo 'selected="selected"'; ?>>Quebec</option>
-				<option value="SK"<?php if($selProvince=="SK") echo 'selected="selected"'; ?>>Saskatchewan</option>
-				<option value="NT"<?php if($selProvince=="NT") echo 'selected="selected"'; ?>>Territoires du Nord-Ouest</option>
-				<option value="NU"<?php if($selProvince=="NU") echo 'selected="selected"'; ?>>Nunavut</option>
-				<option value="YT"<?php if($selProvince=="YT") echo 'selected="selected"'; ?>>Yukon</option>
+				<option value="AB"<?php if($selProvince=="AB") echo ' selected="selected"'; ?>>Alberta</option>
+				<option value="BC"<?php if($selProvince=="BC") echo ' selected="selected"'; ?>>Colombie-Britannique</option>		
+				<option value="MB"<?php if($selProvince=="MB") echo ' selected="selected"'; ?>>Manitoba</option>
+				<option value="NB"<?php if($selProvince=="NB") echo ' selected="selected"'; ?>>Nouveau-Brunswick</option>
+				<option value="NL"<?php if($selProvince=="NL") echo ' selected="selected"'; ?>>Terre-Neuve-et-Labrador</option>
+				<option value="NS"<?php if($selProvince=="NS") echo ' selected="selected"'; ?>>Nouvelle-Écosse</option>
+				<option value="ON"<?php if($selProvince=="ON") echo ' selected="selected"'; ?>>Ontario</option>
+				<option value="PE"<?php if($selProvince=="PE") echo ' selected="selected"'; ?>>Île-du-Prince-Édouard</option>
+				<option value="QC"<?php if($selProvince=="QC") echo ' selected="selected"'; ?>>Quebec</option>
+				<option value="SK"<?php if($selProvince=="SK") echo ' selected="selected"'; ?>>Saskatchewan</option>
+				<option value="NT"<?php if($selProvince=="NT") echo ' selected="selected"'; ?>>Territoires du Nord-Ouest</option>
+				<option value="NU"<?php if($selProvince=="NU") echo ' selected="selected"'; ?>>Nunavut</option>
+				<option value="YT"<?php if($selProvince=="YT") echo ' selected="selected"'; ?>>Yukon</option>
 			</select>
 		</div>
 
@@ -145,7 +145,7 @@ session_start();
           }
           else
           {
-            echo '<button id="envoyerFormulaire" type="submit" value="">Mis à jour</button>';
+            echo '<button id="envoyerFormulaire" type="submit" value="">Mettre à jour</button>';
           }
         ?>
       </form>

@@ -49,7 +49,7 @@ header p{
 nav{
     background-color: rgb(221, 202, 188);
     display: grid;
-    grid-template-rows: 46px, 46px;
+    grid-template-rows: 46px 46px;
 }
 #menu{
     display: grid;
@@ -309,7 +309,7 @@ margin: auto auto;
 }
 
 
-#lienPanier{
+.lienPanier{
     display: inline;
     font-weight: bold;
     vertical-align: top;
@@ -460,9 +460,6 @@ button:hover {
       font-size: 16pt;
       margin-bottom: 10px;
   }
-  #gridItemRight > h4{
-    margin-left:20px;
-}
 
 
   .redErreurPanier{
@@ -476,14 +473,11 @@ button:hover {
       display: grid;
       width: 960px;
       padding-left: 20px;
-      grid-template-columns: auto auto;
+      grid-template-columns: 500px 440px;
   }
-
-  #gridItemLeft, #gridItemRight {
-    width: 440px;
+  #gridItemRight{
+      width: 420px;
   }
-  
-
   #tableAdresse{
       margin-top: 10px;
       width: 400px;
@@ -493,17 +487,6 @@ button:hover {
   #tableAdresse td, #tableAdresse th{
     padding: 10px;
 }
-#bonjourUser{
-    font-weight: bold;
-    font-size: 14pt;
-    display: block;
-    width: 300px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    color:rgb(160, 110, 77);
-    border-bottom: 1px solid rgba(160, 110, 77);
-
 .paiement {
     margin-left: 20px;
     margin-top: 20px;

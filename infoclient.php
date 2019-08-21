@@ -44,7 +44,7 @@ if(!isset($_SESSION['user']))
     else
     {
       include('clientinfo-validation.php');
-      echo '<h2>Bonjour '.$_SESSION['user'].'</h2>';
+      echo '<p class="bonjourUser">Bonjour '.$_SESSION['user'].'</p>';
 
     }
 	?>

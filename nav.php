@@ -1,5 +1,5 @@
 <div id="top-menu">
-        <a href="panier.php" id="lienPanier">Votre panier( 
+        <a href="panier.php" class="lienPanier">Votre panier( 
                 <?php if ( isset($_SESSION['panier']) ){
                         echo $_SESSION['panier']->compterProduits(); }
                         else{ echo "0";} ?> ) </a>
@@ -13,11 +13,11 @@
                         
                         if(isset($_SESSION['user']))
                         {
-                                echo '<a href="logout.php" id="lienPanier">Logout</a>';
+                                echo '<a href="logout.php" class="lienPanier">Logout</a>';
                         }
                         else
                         {
-                                echo '<a href="login.php" id="lienPanier">Login</a>';
+                                echo '<a href="login.php" class="lienPanier">Login</a>';
                         }
                 ?>
 </div>
