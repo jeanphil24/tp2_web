@@ -493,6 +493,16 @@ button:hover {
   #tableAdresse td, #tableAdresse th{
     padding: 10px;
 }
+#bonjourUser{
+    font-weight: bold;
+    font-size: 14pt;
+    display: block;
+    width: 300px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    color:rgb(160, 110, 77);
+    border-bottom: 1px solid rgba(160, 110, 77);
 
 .paiement {
     margin-left: 20px;

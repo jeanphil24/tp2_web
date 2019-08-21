@@ -44,7 +44,7 @@ if(!isset($_SESSION['user']))
     
 		else
 		{
-      echo "Bonjour " . $_SESSION['user'];
+      echo '<p id="bonjourUser">Bonjour ' . $_SESSION['user'] . '</p>';
     }
 	 ?>
    <ul id="OptionsCompte">
