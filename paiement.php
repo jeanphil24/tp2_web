@@ -9,6 +9,12 @@ if(!isset($_SESSION['user']))
   header('Location:login.php');
   exit;
 }
+
+if (isset($_POST['selPaiement'])){
+  include('placer-commande.php');
+  unset($_SESSION['panier']);
+  $success = true;
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,21 +41,37 @@ if(!isset($_SESSION['user']))
       ?>
     </nav>
     <main>
+
+
+
+
      <h2> Facture et paiement </h2>
-    <?php
-        if ( isset($_SESSION['panier']) ){
-          if( $_SESSION['panier']->compterProduits() == 0 ){
-            echo '<p>Le panier est vide.</p>
-            <p><a href="vente.php">Cliquez ici pour visiter la page de notre boutique !</a></p>';
-          }else{
-            include('affichage-paiment.php');
-            
-          }
-        }else{
+
+     <?php
+    if (isset($success))
+    {
+      echo "<p>La commande a été effectué avec succès </p>";
+    }
+    else 
+    {
+      if ( isset($_SESSION['panier']) )
+      {
+        if( $_SESSION['panier']->compterProduits() == 0 ){
           echo '<p>Le panier est vide.</p>
           <p><a href="vente.php">Cliquez ici pour visiter la page de notre boutique !</a></p>';
-          }
-      ?> 
+        }
+        else{
+          include('affichage-paiment.php');
+        }
+      }
+      else
+      {
+          echo '<p>Le panier est vide.</p>
+          <p><a href="vente.php">Cliquez ici pour visiter la page de notre boutique !</a></p>';
+      }
+    }
+    
+    ?>
     </main>
     <footer>
       <?php

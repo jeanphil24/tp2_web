@@ -5,10 +5,10 @@
     $listeAffichage;
     $id;
     $nombreAchat;
-    foreach ($listePanier as $itemPanier){
+    foreach ($listePanier as $key => $value){
 
-        $id = $itemPanier->getID();
-        $nombreAchat = $itemPanier->getQuantite();
+        $id = $key;
+        $nombreAchat = $value;
         try {
 
             $reponse = $db->prepare( "CALL chercher_produit(:id)" );
@@ -67,11 +67,6 @@
 
 <div id=gridFacture>
     <div id="gridItemLeft">
-        
-
-        
-
-        
         <?php
             $manager = new PersonneDao($db);
             $client = $manager->get($_SESSION['user']);
@@ -84,13 +79,26 @@
             </table>
     </div>
     <div id="gridItemRight">
-        <h4>Total du panier</h4>
-        <table align="right" id="tableTotalPanier">
-            <tr> <td>Sous-total</td><td class="colonneSoustotalPanier"><?php echo $sousTotal; ?> $</td> </tr>
-            <tr> <td>Expédition</td><td class="colonneSoustotalPanier">10$</td> </tr>
-            <tr> <td>Total</td><td class="colonneSoustotalPanier"><?php echo $grandTotal ; ?> $</td> </tr>
-        </table>
-            <input type="submit" class="btnSubmitPagePanier" value="Procéder au paiement">
+
+            <h4>Total du panier</h4>
+            <table align="right" id="tableTotalPanier">
+                <tr> <td>Sous-total</td><td class="colonneSoustotalPanier"><?php echo $sousTotal; ?> $</td> </tr>
+                <tr> <td>Expédition</td><td class="colonneSoustotalPanier">10$</td> </tr>
+                <tr> <td>Total</td><td class="colonneSoustotalPanier"><?php echo $grandTotal ; ?> $</td> </tr>
+            </table>
+        <div class="paiement">
+            <form action="paiement.php" method="POST">   
+                <label  for="selPaiement">Paiement :</label>
+                <select id="selPaiement" name="selPaiement">
+                    <option >Visa</option>
+                    <option >Mastercard</option>		
+                    <option >American Express</option>
+                    <option >Paypal</option>
+                </select>
+                <input type="submit" class="btnSubmitPagePanier" value="Confirmer la commande">
+            </form>
+        </div>
+
     </div>
 </div>
 <?php

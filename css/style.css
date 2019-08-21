@@ -373,6 +373,13 @@ button:hover {
     border-collapse: collapse;
     padding: 10px;
   }
+
+#tableTotalPanier {
+    margin-bottom: 20px;
+}
+
+
+
   #tablePanier{
     width: 920px;
   }
@@ -487,3 +494,7 @@ button:hover {
     padding: 10px;
 }
 
+.paiement {
+    margin-left: 20px;
+    margin-top: 20px;
+}
