@@ -104,34 +104,32 @@ if (isset($_POST['txtUtilisateur']))
 	if ($erreur == false)
 	{	
         $motPasse = $txtPass1 =  SHA1(htmlspecialchars($_POST['txtMotDePasse']));
-		include ('connexion.php');
+        $b="a";
+        $a="b";
 
+        include('connexion.php');
 		try {
 			$manager = new PersonneDao($db);
-			
-			//Code pour ajouter
 			$client = new Personne($login,$prenom,$nom,$province,$ville,$adresse,$codePostal,$email,$motPasse);
-            $listePersonnes = $manager->getListePersonnes();
-            $existeDeja = false;
-            
-            foreach($listePersonnes as $personne)
-			{
-                if ($personne->getLogin() == $client->getLogin() && !$existeDeja)
-                {
-                    $existeDeja = true;
-                    $errUser = "Ce login existe déja.";
-                }
-			}
-            if (!$existeDeja) 
+            $personne = $manager->get($login);
+
+
+            if ($personne != null)
             {
+                $b = "part 1";
+                $errUser = "Ce login existe déja.";
+            }
+        } 
+        catch (Exception $exc) {
+            if ($exc->getMessage() == "Le nom usager est vide!")
+            {
+                $b = "part 2";
                 $manager->add($client);
                 $_SESSION['user'] = $login; 
                 header('Location: compte.php');
                 exit();
             }
-        } 
-        catch (Exception $exc) {
-            exit( "Erreur :<br />\n" .  $exc->getMessage() );
+            exit( "Erreur :<br />\n" . $exc->getMessage() );
         }           
        
 		$db = null;	
