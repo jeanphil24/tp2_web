@@ -46,28 +46,31 @@ session_start();
 
           if ($personne != null) // if username is found
           {
-            if ($personne->getMotPasse() == $password) // if password is correct send to last visited page
-            {
-              $_SESSION['user'] = $username;
-              header('Location:'. $_SESSION['lastPage']);
-              exit;
+              if ($personne->getMotPasse() == $password) // if password is correct send to last visited page
+              {
+                $_SESSION['user'] = $username;
+                header('Location:'. $_SESSION['lastPage']);
+                exit;
+              }
+              else // if password is NOT correct display message
+              {
+                $errPassw = "Le mot de passe n'est pas correcte.";
+              }
+          }
+          else  // username not found
+          { 
+            if ($username ==""){
+              $errUsername = "Vous devez rentrer un nom d'utilisateur.";
             }
-            else // if password is NOT correct display message
-            {
-              $errPassw = "Le mot de passe n'est pas correcte.";
+            else {
+              $errUsername = "Le nom d'utilisateur n'existe pas.";
             }
           }
 
         }
         catch(Exception $e) 
         {
-          if ($username ==""){
-            $errUsername = "Vous devez rentrer un nom d'utilisateur.";
-          }
-          else {
-            $errUsername = "Le nom d'utilisateur n'existe pas.";
-          }
-
+          exit( "Erreur :<br />\n" . $exc->getMessage() );
         }
       $db = null;
        }
