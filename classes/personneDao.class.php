@@ -83,28 +83,31 @@ class PersonneDao
  
   public function get($login)
   {
-	$reponse = $this ->_db->prepare( "CALL chercher_client_par_login(:login)" );
-	$reponse->execute( array('login' => $login));
-
-	//recuperation en tableau associatif, la cle est le nom de la colonne de la BD, la valeur est son contenu
-	$ligne = $reponse->fetch();
-	$unClient = new Personne(	$ligne['login'], 
-								$ligne['nom'],
-								$ligne['prenom'], 
-								$ligne['province'],
-								$ligne['ville'], 
-								$ligne['adresse'],
-								$ligne['codePostal'], 
-								$ligne['email'],
-								$ligne['motPasse']);
+	$unClient = null;
 	
-	$reponse->closeCursor();
+	if ($login !=null)
+	{
+		$reponse = $this ->_db->prepare( "CALL chercher_client_par_login(:login)" );
+		$reponse->execute( array('login' => $login));
+
+		//recuperation en tableau associatif, la cle est le nom de la colonne de la BD, la valeur est son contenu
+		
+		if ($ligne = $reponse->fetch())
+		{
+			$unClient = new Personne(	$ligne['login'], 
+			$ligne['nom'],
+			$ligne['prenom'], 
+			$ligne['province'],
+			$ligne['ville'], 
+			$ligne['adresse'],
+			$ligne['codePostal'], 
+			$ligne['email'],
+			$ligne['motPasse']);
+		}
+		$reponse->closeCursor();
+	}	
 	return $unClient;	
-	//recuperation en objet, les proprietes de l'objet sont les noms des colonnes, on peut ainsi acceder leur contenu avec le ->
-	/*
-	$donnees = $q->fetch(PDO::FETCH_OBJ);
-	return new Personne($donnees->nom, $donnees->prenom);
-	*/
+
   }
  
 

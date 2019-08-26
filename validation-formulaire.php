@@ -110,25 +110,23 @@ if (isset($_POST['txtUtilisateur']))
         include('connexion.php');
 		try {
 			$manager = new PersonneDao($db);
-			$client = new Personne($login,$prenom,$nom,$province,$ville,$adresse,$codePostal,$email,$motPasse);
             $personne = $manager->get($login);
-
 
             if ($personne != null)
             {
-                $b = "part 1";
                 $errUser = "Ce login existe déja.";
             }
-        } 
-        catch (Exception $exc) {
-            if ($exc->getMessage() == "Le nom usager est vide!")
+            else 
             {
-                $b = "part 2";
+                $client = new Personne($login,$prenom,$nom,$province,$ville,$adresse,$codePostal,$email,$motPasse);
                 $manager->add($client);
                 $_SESSION['user'] = $login; 
                 header('Location: compte.php');
                 exit();
             }
+        } 
+        catch (Exception $exc) 
+        {
             exit( "Erreur :<br />\n" . $exc->getMessage() );
         }           
        
